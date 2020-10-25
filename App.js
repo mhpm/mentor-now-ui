@@ -33,7 +33,7 @@ function Main() {
             iconColor = focused ? 'white' : 'gray'
           }
           if (route.name === 'Profile') {
-            iconName = 'user'
+            iconName = 'user-alt'
             iconColor = focused ? 'white' : 'gray'
           }
 
