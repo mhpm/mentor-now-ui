@@ -1,21 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from '../../components/Container'
+import Text from '../../components/Text'
 
-const Text = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-`
-
-const SubText = styled(Text)`
-  margin-top: 20px;
+const Wrapper = styled.SafeAreaView`
+  flex: 1;
+  padding: 30px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  padding-bottom: 90px;
 `
 
 const HomeScreen = ({ navigation }) => {
   return (
     <Container>
-      <SubText>Home</SubText>
+      <Wrapper>
+        <Text style={{ textAlign: 'center' }}>
+          Nuestros Mentores están listo y entusiasmados por ayudarte con tus
+          materias o alguna actividad que desees aprender
+        </Text>
+        <Text style={{ textAlign: 'center', marginTop: 30 }}>
+          Puedes buscar por materias o topicos de tu interes, como musica,
+          danza, lenguas, fisica, matematicas, etc.
+        </Text>
+        <Text style={{ textAlign: 'center', marginTop: 30 }}>
+          ó si lo prefieres buscar por tu mentor favorito.
+        </Text>
+      </Wrapper>
     </Container>
   )
 }
