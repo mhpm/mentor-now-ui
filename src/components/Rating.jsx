@@ -15,14 +15,14 @@ const Text = styled.Text`
   margin-top: -3px;
 `
 
-const Rating = ({ value, text }) => {
+const Rating = ({ value, color = 'white' }) => {
   function getStar(index) {
     return (
       <FontAwesome
         key={index}
         size={16}
         style={{ marginRight: 2 }}
-        color="white"
+        color={color}
         name={
           value >= 1 + index
             ? 'star'

@@ -19,22 +19,23 @@ function Main() {
         tabBarIcon: ({ focused }) => {
           let iconName
           let iconColor
+          const primaryColor = '#fbc02d'
 
           if (route.name === 'Home') {
             iconName = 'home'
-            iconColor = focused ? 'white' : 'gray'
+            iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Catalog') {
             iconName = 'tags'
-            iconColor = focused ? 'white' : 'gray'
+            iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Search') {
             iconName = 'search'
-            iconColor = focused ? 'white' : 'gray'
+            iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Profile') {
             iconName = 'user-alt'
-            iconColor = focused ? 'white' : 'gray'
+            iconColor = focused ? primaryColor : 'gray'
           }
 
           // You can return any component that you like here!

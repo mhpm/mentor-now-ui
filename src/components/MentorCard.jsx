@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Rating from './Rating'
+import Text from './Text'
 
-const Container = styled.View`
+const Container = styled.Pressable`
   flex-direction: row;
   width: 100%;
   height: 120px;
@@ -10,11 +11,6 @@ const Container = styled.View`
   padding: 15px;
   margin-bottom: 5px;
   background-color: #212529;
-`
-const Text = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
 `
 
 const LeftColumn = styled.View`
@@ -36,20 +32,32 @@ const SubText = styled(Text)`
   color: darkgray;
 `
 
-const MentorCard = ({ data }) => {
+const MentorCard = ({ item }) => {
+  const [rating, setRating] = useState(0)
+  const { name, picture, dob, login } = item
+
+  const getRanting = useCallback(() => {
+    let random = Math.random() * 5 + 1
+    setRating(random)
+  }, [rating])
+
+  useEffect(() => getRanting(), [])
+
+  const goProfile = () => {}
+
   return (
-    <Container>
+    <Container onPress={goProfile}>
       <LeftColumn>
-        <Avatar source={{ uri: data.avatar }} />
+        <Avatar source={{ uri: picture.medium }} />
       </LeftColumn>
       <RightColumn>
-        <Text>{data.first_name + ' ' + data.last_name}</Text>
+        <Text>{name.first + ' ' + name.last}</Text>
         <SubText>Software Engineere</SubText>
-        <SubText>Mentorias impartidas: 34</SubText>
-        <Rating value={3.6} />
+        <SubText>Mentorias impartidas: {dob.age}</SubText>
+        <Rating value={rating} color="#fbc02d" />
       </RightColumn>
     </Container>
   )
 }
 
-export default MentorCard
+export default React.memo(MentorCard)
