@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Text from './Text'
 
 const ButtonStyled = styled.TouchableOpacity`
   align-items: center;
@@ -12,17 +13,11 @@ const ButtonStyled = styled.TouchableOpacity`
   width: 300px;
 `
 
-const Text = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-`
-
 const Button = (props) => {
   const { children, ...rest } = props
   return (
     <ButtonStyled {...rest}>
-      <Text>{children}</Text>
+      <Text weight="bold">{children}</Text>
     </ButtonStyled>
   )
 }

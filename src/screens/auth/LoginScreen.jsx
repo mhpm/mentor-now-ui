@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
+import Text from '../../components/Text'
 import logoImage from '../../../assets/logoW.png'
 
 const Logo = styled.Image`
@@ -9,16 +10,6 @@ const Logo = styled.Image`
   top: 180px;
   width: 200px;
   height: 50px;
-`
-
-const Text = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-`
-
-const SubText = styled(Text)`
-  margin-top: 20px;
 `
 
 const Footer = styled.View`
@@ -31,14 +22,14 @@ const LoginScreen = ({ navigation }) => {
     <Container>
       <Logo source={logoImage}></Logo>
       <Button blue onPress={() => navigation.push('Main')}>
-        <Text>Iniciar con Facebook</Text>
+        Iniciar con Facebook
       </Button>
-      <Button>
-        <Text>Iniciar con Email</Text>
-      </Button>
-      <SubText>¿Eres nuevo? Registrate</SubText>
+      <Button onPress={() => navigation.push('Main')}>Iniciar con Email</Button>
+      <Text weight="bold" style={{ marginTop: 20 }}>
+        ¿Eres nuevo? Registrate
+      </Text>
       <Footer>
-        <Text>MentorNow &reg; 2020</Text>
+        <Text weight="bold">MentorNow &reg; 2020</Text>
       </Footer>
     </Container>
   )

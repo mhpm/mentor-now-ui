@@ -33,7 +33,7 @@ const SearchScreen = ({ navigation }) => {
   }, [])
 
   return (
-    <Container>
+    <Container style={{ paddingTop: 30 }}>
       <SearchBar />
       <Wrapper>
         {loading ? (

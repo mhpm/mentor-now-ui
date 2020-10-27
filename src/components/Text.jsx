@@ -1,7 +1,8 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const TextStyled = styled.Text`
+  font-family: 'Roboto';
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
@@ -11,7 +12,7 @@ const Text = ({
   size = '18px',
   color = 'white',
   children,
-  weight = 'bold',
+  weight = '600',
   ...rest
 }) => {
   return (

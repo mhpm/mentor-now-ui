@@ -14,15 +14,14 @@ const Background = styled.ImageBackground`
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding-top: 25px;
 `
 
 const Container = (props) => {
   const { children, loading, ...rest } = props
 
   return (
-    <ContainerStyled {...rest}>
-      <Background source={Image}>
+    <ContainerStyled>
+      <Background {...rest} source={Image}>
         {loading ? <ActivityIndicator size="large" color="#fff" /> : children}
       </Background>
     </ContainerStyled>

@@ -17,7 +17,14 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Container>
       <Wrapper>
-        <Text style={{ textAlign: 'center' }}>
+        <Text
+          weight="bold"
+          size={'46px'}
+          style={{ textAlign: 'center', color: '#fbc02d' }}
+        >
+          ¡Bienvenido!
+        </Text>
+        <Text style={{ textAlign: 'center', marginTop: 30 }}>
           Nuestros Mentores están listo y entusiasmados por ayudarte con tus
           materias o alguna actividad que desees aprender
         </Text>

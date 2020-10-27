@@ -43,7 +43,7 @@ const SearchBar = (props) => {
       )}
       <Input
         placeholderTextColor="gray"
-        placeholder="Busca..."
+        placeholder="Buscar..."
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         onChangeText={(text) => setText(text)}
         value={text}

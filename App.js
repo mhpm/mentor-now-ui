@@ -8,6 +8,7 @@ import HomeScreen from './src/screens/main/HomeScreen'
 import CatalogScreen from './src/screens/main/CatalogScreen'
 import SearchScreen from './src/screens/main/SearchScreen'
 import ProfileScreen from './src/screens/main/ProfileScreen'
+import { setStatusBarHidden } from 'expo-status-bar'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -26,11 +27,11 @@ function Main() {
             iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Catalog') {
-            iconName = 'tags'
+            iconName = 'book'
             iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Search') {
-            iconName = 'search'
+            iconName = 'user-tie'
             iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Profile') {
@@ -61,7 +62,11 @@ function Main() {
         },
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        style={{ backgroundColor: 'red' }}
+        name="Home"
+        component={HomeScreen}
+      />
       <Tab.Screen name="Catalog" component={CatalogScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
