@@ -66,9 +66,6 @@ const ProfileScreen = ({ navigation, route }) => {
             />
           </Border>
         </Header>
-        <Text size="16px" color="#cecece">
-          Mentores favoritos
-        </Text>
         <Footer>
           <Text weight="bold" onPress={() => navigation.navigate('Login')}>
             Logout
