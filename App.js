@@ -8,7 +8,8 @@ import HomeScreen from './src/screens/main/HomeScreen'
 import CatalogScreen from './src/screens/main/CatalogScreen'
 import SearchScreen from './src/screens/main/SearchScreen'
 import ProfileScreen from './src/screens/main/ProfileScreen'
-import { setStatusBarHidden } from 'expo-status-bar'
+import MentorProfileScreen from './src/screens/main/MentorProfileScreen'
+import FavoritesScreen from './src/screens/main/FavoritesScreen'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -32,6 +33,10 @@ function Main() {
           }
           if (route.name === 'Search') {
             iconName = 'user-tie'
+            iconColor = focused ? primaryColor : 'gray'
+          }
+          if (route.name === 'Favorites') {
+            iconName = 'heart'
             iconColor = focused ? primaryColor : 'gray'
           }
           if (route.name === 'Profile') {
@@ -69,7 +74,16 @@ function Main() {
       />
       <Tab.Screen name="Catalog" component={CatalogScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Favorites" component={FavoritesScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        options={{
+          // option for hide tab bottom
+          tabBarButton: () => null,
+        }}
+        name="MentorProfile"
+        component={MentorProfileScreen}
+      />
     </Tab.Navigator>
   )
 }

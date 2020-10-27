@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { ActivityIndicator } from 'react-native'
 import Container from '../../components/Container'
 import MentorCard from '../../components/MentorCard'
-import SearchBar from '../../components/SearchBar'
 
 const Wrapper = styled.SafeAreaView`
   flex: 1;
@@ -19,12 +18,12 @@ const List = styled.FlatList`
   width: 100%;
 `
 
-const SearchScreen = ({ navigation }) => {
+const FavoritesScreen = ({ navigation }) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?results=100')
+    fetch('https://randomuser.me/api/?results=4')
       .then((response) => response.json())
       .then((data) => {
         setData(data.results)
@@ -34,7 +33,6 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <Container style={{ paddingTop: 30 }}>
-      <SearchBar />
       <Wrapper>
         {loading ? (
           <ActivityIndicator size="large" color="#fbc02d" />
@@ -56,4 +54,4 @@ const SearchScreen = ({ navigation }) => {
   )
 }
 
-export default SearchScreen
+export default FavoritesScreen

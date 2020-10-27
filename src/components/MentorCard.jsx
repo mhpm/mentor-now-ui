@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { AntDesign } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons'
 import Rating from './Rating'
 import Text from './Text'
 
@@ -17,8 +19,14 @@ const LeftColumn = styled.View`
   width: 25%;
 `
 
+const Column = styled.View`
+  width: 55%;
+`
+
 const RightColumn = styled.View`
   flex: auto;
+  justify-content: center;
+  align-items: center;
 `
 
 const Avatar = styled.Image`
@@ -32,7 +40,7 @@ const SubText = styled(Text)`
   color: darkgray;
 `
 
-const MentorCard = ({ item }) => {
+const MentorCard = ({ navigation, item }) => {
   const [rating, setRating] = useState(0)
   const { name, picture, dob, login } = item
 
@@ -41,20 +49,27 @@ const MentorCard = ({ item }) => {
     setRating(random)
   }, [rating])
 
-  useEffect(() => getRanting(), [])
+  useEffect(() => {
+    getRanting()
+  }, [])
 
-  const goProfile = () => {}
+  const goProfile = () => {
+    navigation.navigate('MentorProfile', { info: { name, picture } })
+  }
 
   return (
     <Container onPress={goProfile}>
       <LeftColumn>
         <Avatar source={{ uri: picture.medium }} />
       </LeftColumn>
-      <RightColumn>
+      <Column>
         <Text>{name.first + ' ' + name.last}</Text>
         <SubText>Software Engineere</SubText>
         <SubText>Mentorias impartidas: {dob.age}</SubText>
         <Rating value={rating} color="#fbc02d" />
+      </Column>
+      <RightColumn>
+        <AntDesign name="heart" size={28} color="white" />
       </RightColumn>
     </Container>
   )
