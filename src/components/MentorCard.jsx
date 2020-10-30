@@ -40,7 +40,7 @@ const SubText = styled(Text)`
   color: darkgray;
 `
 
-const MentorCard = ({ navigation, item }) => {
+const MentorCard = ({ navigation, item, hearth }) => {
   const [rating, setRating] = useState(0)
   const { name, picture, dob, login } = item
 
@@ -69,7 +69,7 @@ const MentorCard = ({ navigation, item }) => {
         <Rating value={rating} color="#fbc02d" />
       </Column>
       <RightColumn>
-        <AntDesign name="heart" size={28} color="white" />
+        {hearth && <AntDesign name="heart" size={28} color="white" />}
       </RightColumn>
     </Container>
   )

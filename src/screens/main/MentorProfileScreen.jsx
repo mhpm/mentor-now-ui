@@ -3,13 +3,7 @@ import styled from 'styled-components'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import { FontAwesome } from '@expo/vector-icons'
-
-const Wrapper = styled.SafeAreaView`
-  flex: 1;
-  width: 100%;
-  margin-top: 0;
-  padding-bottom: 90px;
-`
+import Wrapper from '../../components/Wrapper'
 
 const Header = styled.View`
   display: flex;

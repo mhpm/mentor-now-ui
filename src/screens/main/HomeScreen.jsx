@@ -2,21 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
+import Wrapper from '../../components/Wrapper'
 
-const Wrapper = styled.SafeAreaView`
-  flex: 1;
-  padding: 30px;
-  width: 100%;
-  align-items: center;
+const CustomWrapper = styled(Wrapper)`
   justify-content: center;
-  margin-top: 0;
-  padding-bottom: 90px;
+  align-items: center;
+  padding: 20px;
 `
 
 const HomeScreen = ({ navigation }) => {
   return (
     <Container>
-      <Wrapper>
+      <CustomWrapper>
         <Text
           weight="bold"
           size={'46px'}
@@ -35,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={{ textAlign: 'center', marginTop: 30 }}>
           ó si lo prefieres buscar por tu mentor favorito.
         </Text>
-      </Wrapper>
+      </CustomWrapper>
     </Container>
   )
 }

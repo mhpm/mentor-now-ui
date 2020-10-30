@@ -1,56 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { ActivityIndicator } from 'react-native'
+import useFetch from '../../../hooks/useFetch'
 import Container from '../../components/Container'
+import Wrapper from '../../components/Wrapper'
 import MentorCard from '../../components/MentorCard'
 import SearchBar from '../../components/SearchBar'
-
-const Wrapper = styled.SafeAreaView`
-  flex: 1;
-  padding: 10px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0;
-  padding-bottom: 90px;
-`
 
 const List = styled.FlatList`
   width: 100%;
 `
 
 const SearchScreen = ({ navigation }) => {
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('https://randomuser.me/api/?results=100')
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.results)
-        setLoading(false)
-      })
-  }, [])
+  const { loading, data } = useFetch('https://randomuser.me/api/?results=100')
 
   return (
     <Container style={{ paddingTop: 30 }}>
       <SearchBar />
-      <Wrapper>
-        {loading ? (
-          <ActivityIndicator size="large" color="#fbc02d" />
-        ) : (
-          <List
-            data={data}
-            renderItem={(item) => (
-              <MentorCard
-                key={item.cell}
-                item={item.item}
-                navigation={navigation}
-              />
-            )}
-            keyExtractor={(item) => item.cell}
-          />
-        )}
+      <Wrapper loading={loading} style={{ padding: 10, paddingBottom: 90 }}>
+        <List
+          data={data}
+          renderItem={(item) => (
+            <MentorCard
+              key={item.cell}
+              item={item.item}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={(item) => item.cell}
+        />
       </Wrapper>
     </Container>
   )
