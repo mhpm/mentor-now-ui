@@ -11,16 +11,19 @@ const Container = styled(Pressable)`
   width: 100%;
   height: 120px;
   border-radius: 10px;
-  padding: 15px;
   margin-bottom: 5px;
   background-color: #212529;
 `
 
 const LeftColumn = styled(View)`
-  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
 `
 
 const Column = styled(View)`
+  padding: 10px;
   width: 55%;
 `
 
@@ -31,8 +34,8 @@ const RightColumn = styled(View)`
 `
 
 const Avatar = styled(Image)`
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50px;
 `
 
