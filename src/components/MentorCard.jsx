@@ -44,7 +44,7 @@ const SubText = styled(Text)`
 const MentorCard = ({ item, hearth }) => {
   const navigation = useNavigation()
   const [rating, setRating] = useState(0)
-  const { name, picture, dob, login } = item
+  const { name, picture, dob } = item
 
   const getRanting = useCallback(() => {
     let random = Math.random() * 5 + 1

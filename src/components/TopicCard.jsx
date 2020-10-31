@@ -1,30 +1,56 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components'
+import Text from './Text'
 
-const ButtonStyled = styled.TouchableOpacity`
-  align-items: center;
-  width: 45%;
-  height: 60px;
-  border-radius: 100px;
+const Container = styled.Pressable`
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
   padding: 15px;
-  margin-top: 10px;
-  background-color: ${(props) => (props.blue ? '#3b5998  ' : '#2c2c2c')};
-  width: 300px;
+  margin-bottom: 5px;
+  background-color: #212529;
 `
 
-const Text = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
+const Title = styled(Text)`
+  text-transform: capitalize;
 `
 
-const TopicCard = (props) => {
-  const { children, ...rest } = props
+const SubText = styled(Text)`
+  font-size: 14px;
+  color: darkgray;
+`
+
+const TopicCard = ({ item }) => {
+  const navigation = useNavigation()
+  const [rating, setRating] = useState(0)
+  const { _id, topic, mentores } = item
+
+  const getRanting = useCallback(() => {
+    let random = Math.random() * 5 + 1
+    setRating(random)
+  }, [rating])
+
+  useEffect(() => {
+    getRanting()
+  }, [])
+
+  const goProfile = () => {
+    //navigation.navigate('MentorProfile', { topic: { _id } })
+  }
+
   return (
-    <ButtonStyled {...rest}>
-      <Text>{children}</Text>
-    </ButtonStyled>
+    <Container onPress={goProfile}>
+      <Title weight="bold" size="28px" color="#fbc02d">
+        {topic}
+      </Title>
+      <SubText>{mentores} Mentores</SubText>
+    </Container>
   )
 }
 
-export default TopicCard
+export default React.memo(TopicCard)

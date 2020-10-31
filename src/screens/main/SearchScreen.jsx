@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import useFetch from '../../../hooks/useFetch'
+import useFetch from '../../hooks/useFetch'
 import Container from '../../components/Container'
 import Wrapper from '../../components/Wrapper'
 import MentorCard from '../../components/MentorCard'

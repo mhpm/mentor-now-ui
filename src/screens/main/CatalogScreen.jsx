@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { ActivityIndicator, Text } from 'react-native'
 import Container from '../../components/Container'
-import MentorCard from '../../components/MentorCard'
+import TopicCard from '../../components/TopicCard'
 import SearchBar from '../../components/SearchBar'
+import Text from '../../components/Text'
 
 const Wrapper = styled.SafeAreaView`
   flex: 1;
@@ -19,34 +19,61 @@ const List = styled.FlatList`
   width: 100%;
 `
 
-const CatalogScreen = ({ navigation }) => {
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
+const TopBar = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #fbc02d;
+  margin: 10px;
+  padding: 11px;
+  border-radius: 7px;
+`
 
-  useEffect(() => {
-    fetch('https://randomuser.me/api/?results=100')
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.results)
-        setLoading(false)
-      })
-  }, [])
+const topics = [
+  {
+    _id: 0,
+    topic: 'matemáticas',
+    mentores: 11,
+  },
+  {
+    _id: 1,
+    topic: 'ciencias',
+    mentores: 30,
+  },
+  {
+    _id: 2,
+    topic: 'progración',
+    mentores: 50,
+  },
+  {
+    _id: 3,
+    topic: 'arte',
+    mentores: 11,
+  },
+  {
+    _id: 4,
+    topic: 'musica',
+    mentores: 15,
+  },
+]
+
+const CatalogScreen = () => {
+  const [data, setData] = useState(topics)
+  const [loading, setLoading] = useState(false)
 
   return (
     <Container style={{ paddingTop: 30 }}>
       <SearchBar />
-      <Wrapper>
-        {loading ? (
-          <ActivityIndicator size="large" color="#fbc02d" />
-        ) : (
-          <List
-            data={data}
-            renderItem={(item) => (
-              <MentorCard key={item.cell} item={item.item} />
-            )}
-            keyExtractor={(item) => item.cell}
-          />
-        )}
+      <Wrapper loading={loading}>
+        <TopBar>
+          <Text weight="bold">Top Mas Solicitadas</Text>
+        </TopBar>
+        <List
+          data={data}
+          renderItem={(item) => <TopicCard key={item._id} item={item.item} />}
+          keyExtractor={(item) => item._id}
+        />
       </Wrapper>
     </Container>
   )
