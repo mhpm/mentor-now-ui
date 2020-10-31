@@ -1,18 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesome } from '@expo/vector-icons'
+import { View } from 'react-native'
 
-const StarsContainer = styled.View`
+const StarsContainer = styled(View)`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 5px;
-`
-
-const Text = styled.Text`
-  color: white;
-  font-size: 16px;
-  margin-top: -3px;
 `
 
 const Rating = ({ value, color = 'white' }) => {

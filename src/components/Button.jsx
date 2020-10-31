@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Text from './Text'
+import { TouchableOpacity } from 'react-native'
 
-const ButtonStyled = styled.TouchableOpacity`
+const ButtonStyled = styled(TouchableOpacity)`
   align-items: center;
   height: 60px;
   border-radius: 100px;

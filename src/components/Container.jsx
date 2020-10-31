@@ -1,24 +1,29 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { ActivityIndicator } from 'react-native'
+import {
+  ActivityIndicator,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import Image from '../../assets/bg.jpg'
 import styled from 'styled-components'
 
-const ContainerStyled = styled.View`
+const ContainerStyled = styled(View)`
   flex: 1;
   width: 100%;
   justify-content: center;
   align-items: center;
 `
-const Background = styled.ImageBackground`
+const Background = styled(ImageBackground)`
   flex: 1;
   width: 100%;
   justify-content: center;
   align-items: center;
 `
 
-const BackButton = styled.TouchableOpacity`
+const BackButton = styled(TouchableOpacity)`
   position: absolute;
   left: 25px;
   top: 50px;

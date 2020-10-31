@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Text as Txt } from 'react-native'
 
-const TextStyled = styled.Text`
+const TextStyled = styled(Txt)`
   font-family: 'Roboto';
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};

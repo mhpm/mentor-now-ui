@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components'
 import Text from './Text'
 
-const Container = styled.Pressable`
+const Container = styled(Pressable)`
   flex: 1;
   justify-content: center;
   align-items: flex-start;

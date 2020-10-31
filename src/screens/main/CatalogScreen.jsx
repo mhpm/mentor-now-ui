@@ -4,8 +4,9 @@ import Container from '../../components/Container'
 import TopicCard from '../../components/TopicCard'
 import SearchBar from '../../components/SearchBar'
 import Text from '../../components/Text'
+import { SafeAreaView, FlatList, View } from 'react-native'
 
-const Wrapper = styled.SafeAreaView`
+const Wrapper = styled(SafeAreaView)`
   flex: 1;
   padding: 10px;
   width: 100%;
@@ -15,11 +16,11 @@ const Wrapper = styled.SafeAreaView`
   padding-bottom: 90px;
 `
 
-const List = styled.FlatList`
+const List = styled(FlatList)`
   width: 100%;
 `
 
-const TopBar = styled.View`
+const TopBar = styled(View)`
   display: flex;
   justify-content: center;
   align-items: center;

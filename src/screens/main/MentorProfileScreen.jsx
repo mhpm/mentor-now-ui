@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
-import { FontAwesome } from '@expo/vector-icons'
+import { View, Image } from 'react-native'
 import Wrapper from '../../components/Wrapper'
 
-const Header = styled.View`
+const Header = styled(View)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ const Header = styled.View`
   padding-top: 120px;
 `
 
-const Border = styled.View`
+const Border = styled(View)`
   padding: 0px;
   width: 130px;
   height: 130px;
@@ -27,7 +27,7 @@ const Border = styled.View`
   z-index: 1;
 `
 
-const Avatar = styled.Image`
+const Avatar = styled(Image)`
   width: 120px;
   height: 120px;
   border-radius: 120px;
@@ -35,7 +35,7 @@ const Avatar = styled.Image`
   padding: 0px;
 `
 
-const Footer = styled.View`
+const Footer = styled(View)`
   display: flex;
   flex-direction: row;
   align-items: center;

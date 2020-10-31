@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { Pressable, View, Image } from 'react-native'
 import styled from 'styled-components'
 import { AntDesign } from '@expo/vector-icons'
-import { FontAwesome5 } from '@expo/vector-icons'
 import Rating from './Rating'
 import Text from './Text'
 
-const Container = styled.Pressable`
+const Container = styled(Pressable)`
   flex-direction: row;
   width: 100%;
   height: 120px;
@@ -16,21 +16,21 @@ const Container = styled.Pressable`
   background-color: #212529;
 `
 
-const LeftColumn = styled.View`
+const LeftColumn = styled(View)`
   width: 25%;
 `
 
-const Column = styled.View`
+const Column = styled(View)`
   width: 55%;
 `
 
-const RightColumn = styled.View`
+const RightColumn = styled(View)`
   flex: auto;
   justify-content: center;
   align-items: center;
 `
 
-const Avatar = styled.Image`
+const Avatar = styled(Image)`
   width: 60px;
   height: 60px;
   border-radius: 50px;

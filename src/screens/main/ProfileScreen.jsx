@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { View, SafeAreaView, Image } from 'react-native'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 
-const Wrapper = styled.SafeAreaView`
+const Wrapper = styled(SafeAreaView)`
   flex: 1;
   width: 100%;
   margin-top: 0;
   padding-bottom: 90px;
 `
 
-const Header = styled.View`
+const Header = styled(View)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +21,7 @@ const Header = styled.View`
   padding-top: 120px;
 `
 
-const Border = styled.View`
+const Border = styled(View)`
   padding: 0px;
   width: 130px;
   height: 130px;
@@ -32,7 +33,7 @@ const Border = styled.View`
   z-index: 1;
 `
 
-const Avatar = styled.Image`
+const Avatar = styled(Image)`
   width: 120px;
   height: 120px;
   border-radius: 120px;
@@ -40,7 +41,7 @@ const Avatar = styled.Image`
   padding: 0px;
 `
 
-const Footer = styled.View`
+const Footer = styled(View)`
   display: flex;
   flex-direction: row;
   align-items: center;

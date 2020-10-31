@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ActivityIndicator, SafeAreaView } from 'react-native'
 
-const WrapperStyled = styled.SafeAreaView`
+const WrapperStyled = styled(SafeAreaView)`
   flex: 1;
   width: 100%;
 `
 
-const Spinner = styled.ActivityIndicator`
+const Spinner = styled(ActivityIndicator)`
   flex: 1;
   justify-content: center;
   align-items: center;

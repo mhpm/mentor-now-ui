@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { View, TextInput } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
-const Container = styled.View`
+const Container = styled(View)`
   height: 70px;
   width: 100%;
   padding: 10px;
   position: relative;
 `
 
-const Input = styled.TextInput`
+const Input = styled(TextInput)`
   padding-left: 17px;
   padding-right: 17px;
   border-top-width: 0px;
