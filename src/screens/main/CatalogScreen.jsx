@@ -32,27 +32,27 @@ const TopBar = styled.View`
 
 const topics = [
   {
-    _id: 0,
+    _id: '0',
     topic: 'matemáticas',
     mentores: 11,
   },
   {
-    _id: 1,
+    _id: '1',
     topic: 'ciencias',
     mentores: 30,
   },
   {
-    _id: 2,
+    _id: '2',
     topic: 'progración',
     mentores: 50,
   },
   {
-    _id: 3,
+    _id: '3',
     topic: 'arte',
     mentores: 11,
   },
   {
-    _id: 4,
+    _id: '4',
     topic: 'musica',
     mentores: 15,
   },
