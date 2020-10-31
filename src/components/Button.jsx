@@ -4,19 +4,18 @@ import Text from './Text'
 
 const ButtonStyled = styled.TouchableOpacity`
   align-items: center;
-  width: 45%;
   height: 60px;
   border-radius: 100px;
   padding: 15px;
   margin-top: 10px;
   background-color: ${(props) => (props.blue ? '#3b5998  ' : '#2c2c2c')};
-  width: 300px;
+  width: ${(props) => (props.fluid ? '100%' : '300px')};
 `
 
 const Button = (props) => {
-  const { children, ...rest } = props
+  const { children, fluid, ...rest } = props
   return (
-    <ButtonStyled {...rest}>
+    <ButtonStyled fluid={fluid} {...rest}>
       <Text weight="bold">{children}</Text>
     </ButtonStyled>
   )

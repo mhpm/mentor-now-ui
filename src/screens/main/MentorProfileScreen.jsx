@@ -45,12 +45,12 @@ const Footer = styled.View`
   width: 100%;
 `
 
-const MentorProfileScreen = ({ navigation, route }) => {
+const MentorProfileScreen = ({ route }) => {
   const { info } = route.params
   const { name, picture } = info
 
   return (
-    <Container>
+    <Container icon>
       <Wrapper>
         <Header>
           <Text weight="bold" size="22px">

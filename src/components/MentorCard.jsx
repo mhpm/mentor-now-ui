@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components'
 import { AntDesign } from '@expo/vector-icons'
 import { FontAwesome5 } from '@expo/vector-icons'
@@ -40,7 +41,8 @@ const SubText = styled(Text)`
   color: darkgray;
 `
 
-const MentorCard = ({ navigation, item, hearth }) => {
+const MentorCard = ({ item, hearth }) => {
+  const navigation = useNavigation()
   const [rating, setRating] = useState(0)
   const { name, picture, dob, login } = item
 

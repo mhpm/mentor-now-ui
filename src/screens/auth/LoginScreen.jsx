@@ -19,7 +19,7 @@ const Footer = styled.View`
 
 const LoginScreen = ({ navigation }) => {
   return (
-    <Container>
+    <Container style={{ padding: 20 }}>
       <Logo source={logoImage}></Logo>
       <Button blue onPress={() => navigation.push('Main')}>
         Iniciar con Facebook

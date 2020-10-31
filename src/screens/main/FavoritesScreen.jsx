@@ -9,7 +9,7 @@ const List = styled.FlatList`
   width: 100%;
 `
 
-const FavoritesScreen = ({ navigation }) => {
+const FavoritesScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=4')
 
   return (
@@ -18,12 +18,7 @@ const FavoritesScreen = ({ navigation }) => {
         <List
           data={data}
           renderItem={(item) => (
-            <MentorCard
-              key={item.cell}
-              item={item.item}
-              navigation={navigation}
-              hearth
-            />
+            <MentorCard key={item.cell} item={item.item} hearth />
           )}
           keyExtractor={(item) => item.cell}
         />

@@ -19,13 +19,7 @@ const SearchScreen = ({ navigation }) => {
       <Wrapper loading={loading} style={{ padding: 10, paddingBottom: 90 }}>
         <List
           data={data}
-          renderItem={(item) => (
-            <MentorCard
-              key={item.cell}
-              item={item.item}
-              navigation={navigation}
-            />
-          )}
+          renderItem={(item) => <MentorCard key={item.cell} item={item.item} />}
           keyExtractor={(item) => item.cell}
         />
       </Wrapper>
