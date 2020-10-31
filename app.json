@@ -22,6 +22,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Mentor now app"
+    "description": "Mentor now app",
+    "android": {
+      "package": "com.mhpm.mentornow"
+    }
   }
 }
