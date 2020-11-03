@@ -5,14 +5,15 @@ import styled from 'styled-components'
 import { AntDesign } from '@expo/vector-icons'
 import Rating from './Rating'
 import Text from './Text'
+import theme from '../theme/LightTheme'
 
 const Container = styled(Pressable)`
   flex-direction: row;
   width: 100%;
-  height: 120px;
+  height: 110px;
   border-radius: 10px;
   margin-bottom: 5px;
-  background-color: #212529;
+  background-color: #2c2c2c;
 `
 
 const LeftColumn = styled(View)`
@@ -68,10 +69,10 @@ const MentorCard = ({ item, hearth }) => {
         <Avatar source={{ uri: picture.medium }} />
       </LeftColumn>
       <Column>
-        <Text>{name.first + ' ' + name.last}</Text>
+        <Text weight="bold">{name.first + ' ' + name.last}</Text>
         <SubText>Software Engineere</SubText>
         <SubText>Mentorias impartidas: {dob.age}</SubText>
-        <Rating value={rating} color="#fbc02d" />
+        <Rating value={rating} color={theme.colors.primary} />
       </Column>
       <RightColumn>
         {hearth && <AntDesign name="heart" size={28} color="white" />}

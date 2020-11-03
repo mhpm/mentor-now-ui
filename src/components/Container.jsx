@@ -9,6 +9,7 @@ import {
 import { FontAwesome } from '@expo/vector-icons'
 import Image from '../../assets/bg.jpg'
 import styled from 'styled-components'
+import theme from '../theme/LightTheme'
 
 const ContainerStyled = styled(View)`
   flex: 1;
@@ -40,11 +41,15 @@ const Container = (props) => {
       <Background {...rest} source={Image}>
         {icon && (
           <BackButton onPress={() => navigation.goBack()}>
-            <FontAwesome name="arrow-left" size={32} color="#fbc02d" />
+            <FontAwesome
+              name="arrow-left"
+              size={32}
+              color={theme.colors.primary}
+            />
           </BackButton>
         )}
         {loading ? (
-          <ActivityIndicator size="large" color="#fbc02d" />
+          <ActivityIndicator size="large" color={theme.colors.primary} />
         ) : (
           children
         )}

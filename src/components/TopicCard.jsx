@@ -46,7 +46,7 @@ const TopicCard = ({ item }) => {
 
   return (
     <Container onPress={goProfile}>
-      <Title weight="bold" size="28px" color="#fbc02d">
+      <Title weight="bold" size="28px" primary>
         {topic}
       </Title>
       <SubText>{mentores} Mentores</SubText>

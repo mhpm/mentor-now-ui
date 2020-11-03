@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ActivityIndicator, SafeAreaView } from 'react-native'
+import theme from '../theme/LightTheme'
 
 const WrapperStyled = styled(SafeAreaView)`
   flex: 1;
@@ -18,7 +19,11 @@ const Wrapper = (props) => {
 
   return (
     <WrapperStyled {...rest}>
-      {loading ? <Spinner size="large" color="#fbc02d" /> : children}
+      {loading ? (
+        <Spinner size="large" primary color={theme.colors.primary} />
+      ) : (
+        children
+      )}
     </WrapperStyled>
   )
 }
