@@ -14,7 +14,7 @@ const Header = styled(View)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 250px;
+  height: 170px;
   background-color: #2c2c2c;
   padding-top: 120px;
 `
@@ -27,7 +27,7 @@ const Border = styled(View)`
   border-width: 5px;
   border-color: white;
   position: relative;
-  top: 30px;
+  top: 20px;
   z-index: 1;
 `
 
@@ -46,7 +46,7 @@ const Body = styled(View)`
   align-items: center;
   width: 100%;
   height: 900px;
-  margin-top: 50px;
+  margin-top: 80px;
   padding-bottom: 90px;
 `
 
@@ -88,7 +88,7 @@ const MentorProfileScreen = ({ route }) => {
         <Row>
           <Col>
             <ScrollView
-              style={{ marginBottom: 90 }}
+              style={{ marginBottom: 10 }}
               contentContainerStyle={{ paddingBottom: 100 + '%' }}
             >
               <Header>
@@ -106,7 +106,7 @@ const MentorProfileScreen = ({ route }) => {
                   Mentorias impartidas: {Math.floor(rating * 4)}
                 </Text>
                 <Rating primary value={rating} />
-                <Button style={{ marginTop: 20 }} variant="primary">
+                <Button fluid style={{ marginTop: 20 }} variant="primary">
                   AGENDAR
                 </Button>
 

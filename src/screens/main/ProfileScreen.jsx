@@ -16,7 +16,7 @@ const Header = styled(View)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 250px;
+  height: 170px;
   background-color: #2c2c2c;
   padding-top: 120px;
 `

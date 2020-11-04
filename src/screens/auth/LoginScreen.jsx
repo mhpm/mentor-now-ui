@@ -8,7 +8,7 @@ import logoImage from '../../../assets/logoW.png'
 
 const Logo = styled(Image)`
   position: absolute;
-  top: 180px;
+  top: 150px;
   width: 200px;
   height: 50px;
 `

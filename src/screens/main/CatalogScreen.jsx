@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Container from '../../components/Container'
 import TopicCard from '../../components/TopicCard'
@@ -13,7 +13,7 @@ const Wrapper = styled(SafeAreaView)`
   align-items: center;
   justify-content: center;
   margin-top: 0;
-  padding-bottom: 90px;
+  padding-bottom: 70px;
 `
 
 const List = styled(FlatList)`
@@ -57,6 +57,21 @@ const topics = [
     topic: 'musica',
     mentores: 15,
   },
+  {
+    _id: '5',
+    topic: 'Ingles',
+    mentores: 50,
+  },
+  {
+    _id: '6',
+    topic: 'Cafetería',
+    mentores: 11,
+  },
+  {
+    _id: '7',
+    topic: 'Algoritmos',
+    mentores: 15,
+  },
 ]
 
 const CatalogScreen = () => {
@@ -64,7 +79,7 @@ const CatalogScreen = () => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <Container style={{ paddingTop: 30 }}>
+    <Container style={{ paddingTop: 5 + '%' }}>
       <SearchBar />
       <Wrapper loading={loading}>
         <TopBar>
@@ -80,4 +95,4 @@ const CatalogScreen = () => {
   )
 }
 
-export default CatalogScreen
+export default React.memo(CatalogScreen)
