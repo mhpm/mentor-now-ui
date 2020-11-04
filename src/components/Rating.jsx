@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesome } from '@expo/vector-icons'
 import { View } from 'react-native'
+import theme from '../theme/LightTheme'
 
 const StarsContainer = styled(View)`
   display: flex;
@@ -10,14 +11,14 @@ const StarsContainer = styled(View)`
   margin-top: 5px;
 `
 
-const Rating = ({ value, color = 'white' }) => {
+const Rating = ({ value, primary, color = 'white' }) => {
   function getStar(index) {
     return (
       <FontAwesome
         key={index}
         size={16}
         style={{ marginRight: 2 }}
-        color={color}
+        color={primary ? theme.colors.primary : color}
         name={
           value >= 1 + index
             ? 'star'

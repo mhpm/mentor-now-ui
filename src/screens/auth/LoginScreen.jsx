@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <Container style={{ padding: 20 }}>
       <Logo source={logoImage}></Logo>
-      <Button blue onPress={() => navigation.push('Main')}>
+      <Button variant="blue" onPress={() => navigation.push('Main')}>
         Iniciar con Facebook
       </Button>
       <Button onPress={() => navigation.push('Main')}>Iniciar con Email</Button>

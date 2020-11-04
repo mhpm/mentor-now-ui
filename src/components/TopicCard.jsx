@@ -12,7 +12,9 @@ const Container = styled(Pressable)`
   width: 100%;
   height: 100px;
   border-radius: 10px;
-  padding: 15px;
+  padding-left: 25px;
+  padding-top: 45px;
+  padding-bottom: 45px;
   margin-bottom: 5px;
   background-color: #212529;
 `

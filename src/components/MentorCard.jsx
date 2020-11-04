@@ -60,7 +60,7 @@ const MentorCard = ({ item, hearth }) => {
   }, [])
 
   const goProfile = () => {
-    navigation.navigate('MentorProfile', { info: { name, picture } })
+    navigation.navigate('MentorProfile', { info: { name, picture, rating } })
   }
 
   return (
@@ -72,7 +72,7 @@ const MentorCard = ({ item, hearth }) => {
         <Text weight="bold">{name.first + ' ' + name.last}</Text>
         <SubText>Software Engineere</SubText>
         <SubText>Mentorias impartidas: {dob.age}</SubText>
-        <Rating value={rating} color={theme.colors.primary} />
+        <Rating primary value={rating} />
       </Column>
       <RightColumn>
         {hearth && <AntDesign name="heart" size={28} color="white" />}

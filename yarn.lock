@@ -11180,6 +11180,18 @@ react-native-reanimated@^1.13.1:
   dependencies:
     fbjs "^1.0.0"
 
+react-native-responsive-grid-styles@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-grid-styles/-/react-native-responsive-grid-styles-1.0.2.tgz#a8eb912a065f15480083f411de66d0ce06f37e79"
+  integrity sha512-dZIs0OKnr3Yz+dcv8KW1extHo94t7viMuUxCKyjq+tz3x5S2laeeyOIor8uTPOOJ6fGuiMiCtettber2UOnyOg==
+
+react-native-responsive-grid-system@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-grid-system/-/react-native-responsive-grid-system-1.0.4.tgz#72c2fb3ff8dd2970a691c519e47c5bddcc2b779f"
+  integrity sha512-GMCvZTyJwSuKcFF5nMg/pcIPeHnjl8tSda61mtXn2o3WSZ2t+nS7TSOL5XuxnGYDXTJ50CcZteardGDb3XgOSw==
+  dependencies:
+    react-native-responsive-grid-styles "^1.0.2"
+
 react-native-safe-area-context@3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.4.tgz#9b7f883a5ae8da6218d17467a350434005893602"

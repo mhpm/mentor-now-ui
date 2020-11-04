@@ -44,7 +44,7 @@ function Main() {
           }
 
           // You can return any component that you like here!
-          return <FontAwesome5 name={iconName} size={28} color={iconColor} />
+          return <FontAwesome5 name={iconName} size={24} color={iconColor} />
         },
       })}
       tabBarOptions={{
@@ -52,7 +52,8 @@ function Main() {
         lazyLoad: true,
         tabStyle: {
           backgroundColor: '#ffffff',
-          margin: -8,
+          marginLeft: -8,
+          marginEnd: -8,
           borderRadius: 10,
         },
         style: {
@@ -61,7 +62,7 @@ function Main() {
           position: 'absolute',
           left: 18,
           right: 18,
-          bottom: 15,
+          bottom: 5,
           height: 60,
         },
       }}
@@ -77,6 +78,7 @@ function Main() {
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen
         options={{
+          tabBarVisible: false,
           // option for hide tab bottom
           tabBarButton: () => null,
         }}

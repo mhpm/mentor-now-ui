@@ -41,6 +41,17 @@ const Avatar = styled(Image)`
   padding: 0px;
 `
 
+const Body = styled(View)`
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  background-color: #2c2c2c;
+  margin-top: 150px;
+`
+
 const Footer = styled(View)`
   display: flex;
   flex-direction: row;
@@ -67,6 +78,7 @@ const ProfileScreen = ({ navigation, route }) => {
             />
           </Border>
         </Header>
+
         <Footer>
           <Text weight="bold" onPress={() => navigation.navigate('Login')}>
             Logout

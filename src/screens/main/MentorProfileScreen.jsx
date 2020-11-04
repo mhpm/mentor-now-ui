@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from '../../components/Container'
+import Button from '../../components/Button'
 import Text from '../../components/Text'
-import { View, Image } from 'react-native'
+import { View, Image, ScrollView } from 'react-native'
 import Wrapper from '../../components/Wrapper'
+import TopicCard from '../../components/TopicCard'
+import Rating from '../../components/Rating'
+import { Row, Col } from 'react-native-responsive-grid-system'
 
 const Header = styled(View)`
   display: flex;
@@ -35,6 +39,17 @@ const Avatar = styled(Image)`
   padding: 0px;
 `
 
+const Body = styled(View)`
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 900px;
+  margin-top: 50px;
+  padding-bottom: 90px;
+`
+
 const Footer = styled(View)`
   display: flex;
   flex-direction: row;
@@ -45,21 +60,89 @@ const Footer = styled(View)`
   width: 100%;
 `
 
+const topics = [
+  {
+    _id: '0',
+    topic: 'matemáticas',
+    mentores: 11,
+  },
+  {
+    _id: '1',
+    topic: 'ciencias',
+    mentores: 30,
+  },
+  {
+    _id: '2',
+    topic: 'progración',
+    mentores: 50,
+  },
+]
+
 const MentorProfileScreen = ({ route }) => {
   const { info } = route.params
-  const { name, picture } = info
+  const { name, picture, rating } = info
 
   return (
     <Container icon>
       <Wrapper>
-        <Header>
-          <Text weight="bold" size="22px">
-            {name.first + ' ' + name.last}
-          </Text>
-          <Border>
-            <Avatar source={{ uri: picture.large }} />
-          </Border>
-        </Header>
+        <Row>
+          <Col>
+            <ScrollView
+              style={{ marginBottom: 90 }}
+              contentContainerStyle={{ paddingBottom: 100 + '%' }}
+            >
+              <Header>
+                <Text weight="bold" size="22px">
+                  {name.first + ' ' + name.last}
+                </Text>
+                <Border>
+                  <Avatar source={{ uri: picture.large }} />
+                </Border>
+              </Header>
+              <Body>
+                <Text weight="bold">Senior Software Developer</Text>
+                <Text weight="200">Inivercidad Autonoma de Mexíco</Text>
+                <Text weight="200">
+                  Mentorias impartidas: {Math.floor(rating * 4)}
+                </Text>
+                <Rating primary value={rating} />
+                <Button style={{ marginTop: 20 }} variant="primary">
+                  AGENDAR
+                </Button>
+
+                <Text style={{ marginTop: 20 }} size="30px" weight="bold">
+                  CURRICULUM
+                </Text>
+                <Text style={{ textAlign: 'justify' }}>
+                  Lorem Ipsum is simply dummy text of the printing and typ
+                  esetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typeset ting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus Page Maker including versions of Lorem Ipsum.Lorem
+                  Ipsum is simply dummy text of the printing and typ esetting
+                  industry. Lorem Ipsum has been the industry's standard dummy
+                  text ever since the 1500s, when an unknown printer took a
+                  galley of type and scrambled it to make a type specimen book.
+                </Text>
+                <Text
+                  style={{ marginTop: 10, marginBottom: 10 }}
+                  size="30px"
+                  weight="bold"
+                >
+                  TOPICOS QUE IMPARTE
+                </Text>
+                {topics.map((item) => (
+                  <TopicCard key={item._id} item={item} />
+                ))}
+              </Body>
+            </ScrollView>
+          </Col>
+        </Row>
       </Wrapper>
     </Container>
   )

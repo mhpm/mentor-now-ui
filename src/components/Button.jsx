@@ -1,24 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 import Text from './Text'
-import { TouchableOpacity } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
+import LightTheme from '../theme/LightTheme'
 
-const ButtonStyled = styled(TouchableOpacity)`
-  align-items: center;
+const { colors } = LightTheme
+
+const BaseButton = styled(TouchableHighlight)`
   height: 60px;
   border-radius: 100px;
+  margin: 5px;
+`
+
+const ButtonStyled = styled(View)`
+  height: 60px;
+  border-radius: 100px;
+  align-items: center;
   padding: 15px;
-  margin-top: 10px;
-  background-color: ${(props) => (props.blue ? '#3b5998  ' : '#2c2c2c')};
+  background-color: ${(props) => (props.variant ? props.variant : colors.dark)};
   width: ${(props) => (props.fluid ? '100%' : '300px')};
 `
 
 const Button = (props) => {
-  const { children, fluid, ...rest } = props
+  const { children, variant, fluid, ...rest } = props
   return (
-    <ButtonStyled fluid={fluid} {...rest}>
-      <Text weight="bold">{children}</Text>
-    </ButtonStyled>
+    <BaseButton activeOpacity={0.6} {...rest}>
+      <ButtonStyled
+        activeOpacity={0.6}
+        underlayColor="red"
+        variant={colors[variant]}
+        fluid={fluid}
+      >
+        <Text weight="bold">{children}</Text>
+      </ButtonStyled>
+    </BaseButton>
   )
 }
 
