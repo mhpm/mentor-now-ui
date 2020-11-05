@@ -14,11 +14,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Container>
       <CustomWrapper>
-        <Text
-          weight="bold"
-          size={'46px'}
-          style={{ textAlign: 'center', color: '#fbc02d' }}
-        >
+        <Text color="primary" fontSize="46px" fontFamily="black">
           ¡Bienvenido!
         </Text>
         <Text style={{ textAlign: 'center', marginTop: 30 }}>

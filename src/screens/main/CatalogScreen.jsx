@@ -4,7 +4,8 @@ import Container from '../../components/Container'
 import TopicCard from '../../components/TopicCard'
 import SearchBar from '../../components/SearchBar'
 import Text from '../../components/Text'
-import { SafeAreaView, FlatList, View } from 'react-native'
+import Box from '../../components/Box'
+import { SafeAreaView, FlatList } from 'react-native'
 
 const Wrapper = styled(SafeAreaView)`
   flex: 1;
@@ -20,14 +21,10 @@ const List = styled(FlatList)`
   width: 100%;
 `
 
-const TopBar = styled(View)`
+const TopBar = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  background-color: #fbc02d;
-  margin: 10px;
-  padding: 11px;
   border-radius: 7px;
 `
 
@@ -79,11 +76,11 @@ const CatalogScreen = () => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <Container style={{ paddingTop: 5 + '%' }}>
+    <Container pt={6 + '%'}>
       <SearchBar />
       <Wrapper loading={loading}>
-        <TopBar>
-          <Text weight="bold">Top Mas Solicitadas</Text>
+        <TopBar my={10} p={10} bg="primary" width="100%">
+          <Text fontFamily="black">Top Mas Solicitadas</Text>
         </TopBar>
         <List
           data={data}

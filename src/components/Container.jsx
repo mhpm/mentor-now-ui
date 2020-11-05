@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native'
+import { space } from 'styled-system'
 import { FontAwesome } from '@expo/vector-icons'
 import Image from '../../assets/bg.jpg'
 import styled from 'styled-components'
@@ -18,6 +19,7 @@ const ContainerStyled = styled(View)`
   align-items: center;
 `
 const Background = styled(ImageBackground)`
+  ${space}
   flex: 1;
   width: 100%;
   justify-content: center;

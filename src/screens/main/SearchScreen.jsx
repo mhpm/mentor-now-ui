@@ -10,7 +10,7 @@ const SearchScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=100')
 
   return (
-    <Container style={{ paddingTop: 5 + '%' }}>
+    <Container pt={6 + '%'}>
       <SearchBar />
       <Wrapper loading={loading} style={{ padding: 10, paddingBottom: 70 }}>
         <FlatList

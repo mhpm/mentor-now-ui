@@ -80,8 +80,8 @@ const ProfileScreen = ({ navigation, route }) => {
         </Header>
 
         <Footer>
-          <Text weight="bold" onPress={() => navigation.navigate('Login')}>
-            Logout
+          <Text fontFamily="bold" onPress={() => navigation.navigate('Login')}>
+            Cerrar Sesión
           </Text>
         </Footer>
       </Wrapper>

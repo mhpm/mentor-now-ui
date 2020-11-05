@@ -40,11 +40,6 @@ const Avatar = styled(Image)`
   border-radius: 50px;
 `
 
-const SubText = styled(Text)`
-  font-size: 14px;
-  color: darkgray;
-`
-
 const MentorCard = ({ item, hearth }) => {
   const navigation = useNavigation()
   const [rating, setRating] = useState(0)
@@ -69,9 +64,13 @@ const MentorCard = ({ item, hearth }) => {
         <Avatar source={{ uri: picture.medium }} />
       </LeftColumn>
       <Column>
-        <Text weight="bold">{name.first + ' ' + name.last}</Text>
-        <SubText>Software Engineere</SubText>
-        <SubText>Mentorias impartidas: {dob.age}</SubText>
+        <Text fontFamily="bold">{name.first + ' ' + name.last}</Text>
+        <Text fontFamily="light" fontSize="14px">
+          Software Engineere
+        </Text>
+        <Text fontFamily="light" fontSize="14px">
+          Mentorias impartidas: {dob.age}
+        </Text>
         <Rating primary value={rating} />
       </Column>
       <RightColumn>

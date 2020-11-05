@@ -23,11 +23,6 @@ const Title = styled(Text)`
   text-transform: capitalize;
 `
 
-const SubText = styled(Text)`
-  font-size: 14px;
-  color: darkgray;
-`
-
 const TopicCard = ({ item }) => {
   const navigation = useNavigation()
   const [rating, setRating] = useState(0)
@@ -48,10 +43,12 @@ const TopicCard = ({ item }) => {
 
   return (
     <Container onPress={goProfile}>
-      <Title weight="bold" size="28px" primary>
+      <Title fontFamily="bold" fontSize="28px" color="primary">
         {topic}
       </Title>
-      <SubText>{mentores} Mentores</SubText>
+      <Text fontFamily="light" fontSize="14px">
+        {mentores} Mentores
+      </Text>
     </Container>
   )
 }
