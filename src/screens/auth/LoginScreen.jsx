@@ -26,11 +26,11 @@ const LoginScreen = ({ navigation }) => {
         Iniciar con Facebook
       </Button>
       <Button onPress={() => navigation.push('Main')}>Iniciar con Email</Button>
-      <Text weight="bold" style={{ marginTop: 20 }}>
-        ¿Eres nuevo? Registrate
+      <Text fontFamily="light" mt={2}>
+        ¿Eres nuevo? <Text>Registrate</Text>
       </Text>
       <Footer>
-        <Text weight="bold">MentorNow &reg; 2020</Text>
+        <Text fontFamily="bold">MentorNow &reg; 2020</Text>
       </Footer>
     </Container>
   )

@@ -1,44 +1,15 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { View, SafeAreaView, Image } from 'react-native'
+import { View, SafeAreaView } from 'react-native'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
+import { ProfileHeader } from '../../components'
 
 const Wrapper = styled(SafeAreaView)`
   flex: 1;
   width: 100%;
   margin-top: 0;
   padding-bottom: 90px;
-`
-
-const Header = styled(View)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 170px;
-  background-color: #2c2c2c;
-  padding-top: 120px;
-`
-
-const Border = styled(View)`
-  padding: 0px;
-  width: 130px;
-  height: 130px;
-  border-radius: 120px;
-  border-width: 5px;
-  border-color: white;
-  position: relative;
-  top: 30px;
-  z-index: 1;
-`
-
-const Avatar = styled(Image)`
-  width: 120px;
-  height: 120px;
-  border-radius: 120px;
-  margin: 0px;
-  padding: 0px;
 `
 
 const Body = styled(View)`
@@ -68,16 +39,10 @@ const ProfileScreen = ({ navigation, route }) => {
   return (
     <Container>
       <Wrapper>
-        <Header>
-          <Text weight="bold" size="22px">
-            Michelle Perez Morales{' '}
-          </Text>
-          <Border>
-            <Avatar
-              source={{ uri: 'https://randomuser.me/api/portraits/men/74.jpg' }}
-            />
-          </Border>
-        </Header>
+        <ProfileHeader
+          name="michelle perez"
+          picture="https://randomuser.me/api/portraits/men/40.jpg"
+        />
 
         <Footer>
           <Text fontFamily="bold" onPress={() => navigation.navigate('Login')}>

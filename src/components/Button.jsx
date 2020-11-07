@@ -31,7 +31,9 @@ const Button = (props) => {
         underlayColor="red"
         variant={colors[variant]}
       >
-        <Text fontFamily="bold">{children}</Text>
+        <Text fontSize="17px" fontFamily="bold">
+          {children}
+        </Text>
       </ButtonStyled>
     </BaseButton>
   )

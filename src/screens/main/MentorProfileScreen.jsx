@@ -1,43 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import Container from '../../components/Container'
-import Button from '../../components/Button'
-import Text from '../../components/Text'
-import { View, Image, ScrollView } from 'react-native'
-import Wrapper from '../../components/Wrapper'
-import TopicCard from '../../components/TopicCard'
-import Rating from '../../components/Rating'
+import {
+  Container,
+  Button,
+  Text,
+  Wrapper,
+  TopicCard,
+  Rating,
+  Box,
+  ProfileHeader,
+} from '../../components/'
+import { View, ScrollView } from 'react-native'
 import { Row, Col } from 'react-native-responsive-grid-system'
-
-const Header = styled(View)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 170px;
-  background-color: #2c2c2c;
-  padding-top: 120px;
-`
-
-const Border = styled(View)`
-  padding: 0px;
-  width: 130px;
-  height: 130px;
-  border-radius: 120px;
-  border-width: 5px;
-  border-color: white;
-  position: relative;
-  top: 20px;
-  z-index: 1;
-`
-
-const Avatar = styled(Image)`
-  width: 120px;
-  height: 120px;
-  border-radius: 120px;
-  margin: 0px;
-  padding: 0px;
-`
 
 const Body = styled(View)`
   padding: 20px;
@@ -91,29 +65,27 @@ const MentorProfileScreen = ({ route }) => {
               style={{ marginBottom: 10 }}
               contentContainerStyle={{ paddingBottom: 100 + '%' }}
             >
-              <Header>
-                <Text weight="bold" size="22px">
-                  {name.first + ' ' + name.last}
-                </Text>
-                <Border>
-                  <Avatar source={{ uri: picture.large }} />
-                </Border>
-              </Header>
+              <ProfileHeader
+                name={`${name.first} ${name.last}`}
+                picture={picture.large}
+              />
               <Body>
-                <Text weight="bold">Senior Software Developer</Text>
-                <Text weight="200">Inivercidad Autonoma de Mexíco</Text>
-                <Text weight="200">
+                <Text fontFamily="black">Senior Software Developer</Text>
+                <Text fontFamily="light">Inivercidad Autonoma de Mexíco</Text>
+                <Text fontFamily="light">
                   Mentorias impartidas: {Math.floor(rating * 4)}
                 </Text>
                 <Rating primary value={rating} />
-                <Button fluid style={{ marginTop: 20 }} variant="primary">
+                <Button style={{ marginTop: 20 }} variant="primary">
                   AGENDAR
                 </Button>
 
-                <Text style={{ marginTop: 20 }} size="30px" weight="bold">
-                  CURRICULUM
-                </Text>
-                <Text style={{ textAlign: 'justify' }}>
+                <Box bg="dark" width="100%" py={2} mb={2} mt={3}>
+                  <Text fontSize="18px" mx="auto" fontFamily="bold">
+                    CURRICULUM
+                  </Text>
+                </Box>
+                <Text style={{ textAlign: 'justify' }} fontFamily="light">
                   Lorem Ipsum is simply dummy text of the printing and typ
                   esetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -129,13 +101,11 @@ const MentorProfileScreen = ({ route }) => {
                   text ever since the 1500s, when an unknown printer took a
                   galley of type and scrambled it to make a type specimen book.
                 </Text>
-                <Text
-                  style={{ marginTop: 10, marginBottom: 10 }}
-                  size="30px"
-                  weight="bold"
-                >
-                  TOPICOS QUE IMPARTE
-                </Text>
+                <Box bg="dark" width="100%" py={2} mb={2} mt={3}>
+                  <Text fontSize="18px" mx="auto" fontFamily="bold">
+                    TOPICOS QUE IMPARTE
+                  </Text>
+                </Box>
                 {topics.map((item) => (
                   <TopicCard key={item._id} item={item} />
                 ))}

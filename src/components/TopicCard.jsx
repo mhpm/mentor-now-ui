@@ -16,7 +16,7 @@ const Container = styled(Pressable)`
   padding-top: 45px;
   padding-bottom: 45px;
   margin-bottom: 5px;
-  background-color: #212529;
+  background-color: #2c2c2c;
 `
 
 const Title = styled(Text)`
