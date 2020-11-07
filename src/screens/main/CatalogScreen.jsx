@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Container from '../../components/Container'
-import TopicCard from '../../components/TopicCard'
-import SearchBar from '../../components/SearchBar'
-import Text from '../../components/Text'
-import Box from '../../components/Box'
+import { Container, SearchBar, TopicCard, Box, Text } from '../../components'
 import { SafeAreaView, FlatList } from 'react-native'
 
 const Wrapper = styled(SafeAreaView)`
@@ -19,13 +15,6 @@ const Wrapper = styled(SafeAreaView)`
 
 const List = styled(FlatList)`
   width: 100%;
-`
-
-const TopBar = styled(Box)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 7px;
 `
 
 const topics = [
@@ -79,9 +68,11 @@ const CatalogScreen = () => {
     <Container pt={6 + '%'}>
       <SearchBar />
       <Wrapper loading={loading}>
-        <TopBar my={10} p={10} bg="primary" width="100%">
-          <Text fontFamily="black">Top Mas Solicitadas</Text>
-        </TopBar>
+        <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
+          <Text mx="auto" fontFamily="black">
+            Top Mas Solicitadas
+          </Text>
+        </Box>
         <List
           data={data}
           renderItem={(item) => <TopicCard key={item._id} item={item.item} />}

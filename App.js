@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import React from 'react'
 import Navigator from './src/navigations/Navigator'
 import { ThemeProvider } from 'styled-components'

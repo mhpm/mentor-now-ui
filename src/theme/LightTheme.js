@@ -5,6 +5,11 @@ const theme = {
     light: '#ffffff',
     dark: '#2c2c2c',
     blue: '#3b5998',
+    shade1: '#111',
+    shade3: '#333',
+    shade5: '#555',
+    shade7: '#777',
+    shade9: '#999',
   },
   fonts: {
     thin: 'Roboto_100Thin',

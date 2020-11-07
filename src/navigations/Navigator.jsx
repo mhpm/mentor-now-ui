@@ -5,17 +5,35 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import theme from '../theme/LightTheme'
 
-// Screens
+// Auth Screens
+import PrincipalScreen from '../screens/auth/PrincipalScreen'
 import LoginScreen from '../screens/auth/LoginScreen'
+import RegisterScreen from '../screens/auth/RegisterScreen'
+import RecoveryScreen from '../screens/auth/RecoveryScreen'
+
+// Main Screens
 import HomeScreen from '../screens/main/HomeScreen'
 import CatalogScreen from '../screens/main/CatalogScreen'
 import SearchScreen from '../screens/main/SearchScreen'
 import ProfileScreen from '../screens/main/ProfileScreen'
-import MentorProfileScreen from '../screens/main/MentorProfileScreen'
 import FavoritesScreen from '../screens/main/FavoritesScreen'
+
+// Modals Screens
+import MentorProfileScreen from '../screens/main/MentorProfileScreen'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
+
+function Auth() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Principal" component={PrincipalScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Recovery" component={RecoveryScreen} />
+    </Stack.Navigator>
+  )
+}
 
 function Main() {
   return (
@@ -89,15 +107,15 @@ function Main() {
   )
 }
 
-function Navigator() {
+function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Main" component={Main} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-export default Navigator
+export default RootNavigator

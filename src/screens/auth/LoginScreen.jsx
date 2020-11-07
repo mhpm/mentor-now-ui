@@ -1,17 +1,7 @@
 import React from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components'
-import Button from '../../components/Button'
-import Container from '../../components/Container'
-import Text from '../../components/Text'
-import logoImage from '../../../assets/logoW.png'
-
-const Logo = styled(Image)`
-  position: absolute;
-  top: 150px;
-  width: 200px;
-  height: 50px;
-`
+import { Button, Container, Text, Box, SearchBar } from '../../components'
 
 const Footer = styled(View)`
   position: absolute;
@@ -21,16 +11,25 @@ const Footer = styled(View)`
 const LoginScreen = ({ navigation }) => {
   return (
     <Container style={{ padding: 20 }}>
-      <Logo source={logoImage}></Logo>
-      <Button variant="blue" onPress={() => navigation.push('Main')}>
-        Iniciar con Facebook
+      <Box p={2} width="100%">
+        <Text fontFamily="black" fontSize="26px" mx="auto">
+          Inicio de Sesión
+        </Text>
+      </Box>
+      <SearchBar />
+      <SearchBar />
+      <Button fluid onPress={() => navigation.navigate('Main')}>
+        Iniciar Sesión
       </Button>
-      <Button onPress={() => navigation.push('Main')}>Iniciar con Email</Button>
       <Text fontFamily="light" mt={2}>
-        ¿Eres nuevo? <Text>Registrate</Text>
+        <Text onPress={() => navigation.navigate('Recovery')}>
+          ¿Olvidaste tu contraseña?
+        </Text>
       </Text>
       <Footer>
-        <Text fontFamily="bold">MentorNow &reg; 2020</Text>
+        <Text fontFamily="bold" onPress={() => navigation.goBack()}>
+          Cancelar
+        </Text>
       </Footer>
     </Container>
   )
