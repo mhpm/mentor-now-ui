@@ -62,9 +62,9 @@ const CatalogScreen = () => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <Container>
-      <Wrapper mdCol={8} loading={loading}>
-        <SearchBar />
+    <Container pt="6%">
+      <SearchBar />
+      <Wrapper p="10px" pb="75px" mdCol={8} loading={loading}>
         <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
           <Text mx="auto" fontFamily="black">
             Top Mas Solicitadas

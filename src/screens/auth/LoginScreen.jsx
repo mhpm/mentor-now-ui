@@ -11,12 +11,7 @@ const Footer = styled(View)`
 const LoginScreen = ({ navigation }) => {
   return (
     <Container p={3}>
-      <Wrapper
-        flex={1}
-        justifyContent="center"
-        alignItems="center"
-        width="100%"
-      >
+      <Wrapper>
         <Box p={2} width="100%">
           <Text fontFamily="black" fontSize="26px" mx="auto" mb={4}>
             Inicio de Sesión
