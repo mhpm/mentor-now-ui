@@ -22,8 +22,6 @@ const Background = styled(ImageBackground)`
   ${space}
   flex: 1;
   width: 100%;
-  justify-content: center;
-  align-items: center;
 `
 
 const BackButton = styled(TouchableOpacity)`

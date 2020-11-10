@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Container, SearchBar, TopicCard, Box, Text } from '../../components'
-import { SafeAreaView, FlatList } from 'react-native'
-
-const Wrapper = styled(SafeAreaView)`
-  flex: 1;
-  padding: 10px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0;
-  padding-bottom: 70px;
-`
+import {
+  Container,
+  SearchBar,
+  TopicCard,
+  Box,
+  Text,
+  Wrapper,
+} from '../../components'
+import { FlatList } from 'react-native'
 
 const List = styled(FlatList)`
   width: 100%;
@@ -65,9 +62,9 @@ const CatalogScreen = () => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <Container pt={6 + '%'}>
-      <SearchBar />
-      <Wrapper loading={loading}>
+    <Container>
+      <Wrapper mdCol={8} loading={loading}>
+        <SearchBar />
         <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
           <Text mx="auto" fontFamily="black">
             Top Mas Solicitadas

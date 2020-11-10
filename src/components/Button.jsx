@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Text from './Text'
 import { TouchableHighlight, View } from 'react-native'
 import LightTheme from '../theme/LightTheme'
+import { space } from 'styled-system'
 
 const { colors } = LightTheme
 
@@ -11,6 +12,7 @@ const BaseButton = styled(TouchableHighlight)`
   border-radius: 100px;
   margin: 5px;
   width: ${(props) => (props.fluid ? '100%' : '300px')};
+  ${space}
 `
 
 const ButtonStyled = styled(View)`
@@ -26,11 +28,7 @@ const Button = (props) => {
   const { children, variant, fluid, ...rest } = props
   return (
     <BaseButton fluid={fluid} activeOpacity={0.6} {...rest}>
-      <ButtonStyled
-        activeOpacity={0.6}
-        underlayColor="red"
-        variant={colors[variant]}
-      >
+      <ButtonStyled variant={colors[variant]}>
         <Text fontSize="17px" fontFamily="bold">
           {children}
         </Text>

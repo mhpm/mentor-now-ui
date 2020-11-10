@@ -8,6 +8,7 @@ const TextStyled = styled(Txt)`
   ${color}
   ${fontSize}
   ${space}
+  text-decoration: ${(props) => (props.isLink ? 'underline' : 'none')};
 `
 
 const Text = (props) => {

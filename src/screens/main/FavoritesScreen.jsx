@@ -10,8 +10,8 @@ const FavoritesScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=4')
 
   return (
-    <Container pt={6 + '%'}>
-      <Wrapper loading={loading} style={{ padding: 10, paddingBottom: 90 }}>
+    <Container p="10px">
+      <Wrapper mt="6%" pb="90px" loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
           data={data}
