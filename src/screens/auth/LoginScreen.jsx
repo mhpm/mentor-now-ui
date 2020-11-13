@@ -9,10 +9,7 @@ const Footer = styled(View)`
 `
 
 const LoginScreen = ({ navigation }) => {
-  const [info, setInfo] = useState({
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka',
-  })
+  const [info, setInfo] = useState({})
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState(null)
 
@@ -21,21 +18,27 @@ const LoginScreen = ({ navigation }) => {
   }
 
   const handleSubmit = () => {
+    const form = new FormData()
+    form.append('email', info.email)
+    form.append('password', info.password)
+
     setLoading(true)
-    fetch('https://reqres.in/api/login', {
+    fetch('http://45.55.110.117/mentornow-api/api/public/users/login', {
       method: 'POST',
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify(info),
+      body: form,
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if (data?.error) setMsg(data?.error)
+        if (data?.token) navigation.navigate('Main')
+        console.log('data: ', data)
+        setMsg(data.message)
         setLoading(false)
       })
       .catch((error) => {
         console.error('Error: ', error)
-        setMsg(error.message)
+        setMsg(
+          'Parece que hubo un error inesperado, intenta iniciar mas tarde.'
+        )
         setLoading(false)
       })
   }
@@ -49,7 +52,9 @@ const LoginScreen = ({ navigation }) => {
           </Text>
         </Box>
         <Box mb={3}>
-          <Text color="error">{msg}</Text>
+          <Text fontSize="12px" color="error">
+            {msg}
+          </Text>
         </Box>
         <Input
           value={info.email}
@@ -59,8 +64,6 @@ const LoginScreen = ({ navigation }) => {
         <Input
           value={info.password}
           secureTextEntry={true}
-          fontSize="30px"
-          fontFamily="black"
           placeholder="password"
           onChangeText={(value) => handleChangeText('password', value)}
           mb={3}
