@@ -2,14 +2,15 @@ const theme = {
   colors: {
     primary: '#fbc02d',
     secondary: '#4b4b4b',
-    light: '#ffffff',
-    dark: '#2c2c2c',
     blue: '#3b5998',
+    dark: '#2c2c2c',
     shade1: '#111',
     shade3: '#333',
     shade5: '#555',
     shade7: '#777',
     shade9: '#999',
+    light: '#ffffff',
+    error: 'tomato',
   },
   fonts: {
     thin: 'Roboto_100Thin',

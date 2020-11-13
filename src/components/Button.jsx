@@ -25,9 +25,9 @@ const ButtonStyled = styled(View)`
 `
 
 const Button = (props) => {
-  const { children, variant, fluid, ...rest } = props
+  const { children, variant, fluid, ...restProps } = props
   return (
-    <BaseButton fluid={fluid} activeOpacity={0.6} {...rest}>
+    <BaseButton fluid={fluid} activeOpacity={0.6} {...restProps}>
       <ButtonStyled variant={colors[variant]}>
         <Text fontSize="17px" fontFamily="bold">
           {children}

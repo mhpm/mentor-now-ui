@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components'
 import { Button, Container, Text, Box, Wrapper } from '../../components'
 import logoImage from '../../../assets/logoW.png'
+import { AppState } from 'react-native'
 
 const Logo = styled(Image)`
   width: 200px;
@@ -15,17 +16,16 @@ const Footer = styled(View)`
   bottom: 30px;
 `
 
-const Lines = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-`
-
 const PrincipalScreen = ({ navigation }) => {
+  useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange)
+  }, [])
+
+  handleAppStateChange = (nextAppState) => {
+    if (nextAppState === 'active') {
+      console.log('avtive')
+    }
+  }
   return (
     <Container p={4}>
       <Wrapper>

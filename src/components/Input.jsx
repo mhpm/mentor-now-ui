@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components'
 import Box from './Box'
-import Text from './Text'
+import { space, color, fontSize, fontFamily } from 'styled-system'
 
 const validateEmail = (email) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -23,12 +23,16 @@ const StyledInput = styled(TextInput)`
   min-height: 60px;
   width: 100%;
   font-family: 'Roboto_700Bold';
+  ${space}
+  ${color}
+  ${fontSize}
+  ${fontFamily}
 `
 
-const Input = ({ placeholder }) => {
+const Input = (props) => {
   return (
     <Box width="100%" mb={2}>
-      <StyledInput placeholderTextColor="gray" placeholder={placeholder} />
+      <StyledInput placeholderTextColor="gray" {...props} />
     </Box>
   )
 }

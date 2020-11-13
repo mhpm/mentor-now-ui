@@ -62,26 +62,28 @@ function Main() {
           }
 
           // You can return any component that you like here!
-          return <FontAwesome5 name={iconName} size={24} color={iconColor} />
+          return (
+            <FontAwesome5
+              style={{ marginTop: 30 }}
+              name={iconName}
+              size={24}
+              color={iconColor}
+            />
+          )
         },
       })}
       tabBarOptions={{
         showLabel: false,
-        lazyLoad: true,
-        tabStyle: {
-          backgroundColor: '#ffffff',
-          marginLeft: -8,
-          marginEnd: -8,
-          borderRadius: 10,
-        },
         style: {
-          backgroundColor: 'transparent',
-          borderTopWidth: 0,
           position: 'absolute',
-          left: 18,
-          right: 18,
-          bottom: 5,
-          height: 60,
+          borderTopRightRadius: 100,
+          borderTopLeftRadius: 100,
+          borderBottomEndRadius: 100,
+          borderBottomLeftRadius: 100,
+          borderTopWidth: 0,
+          left: 5,
+          right: 5,
+          bottom: -20,
         },
       }}
     >

@@ -14,7 +14,7 @@ const FavoritesScreen = () => {
       <Wrapper mt="6%" pb="90px" loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
-          data={data}
+          data={data?.results}
           renderItem={(item) => (
             <MentorCard key={item.cell} item={item.item} hearth />
           )}
