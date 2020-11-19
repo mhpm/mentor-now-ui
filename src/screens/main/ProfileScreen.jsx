@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { View, SafeAreaView } from 'react-native'
+import { View, SafeAreaView, AsyncStorage } from 'react-native'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import { ProfileHeader } from '../../components'
+import * as Facebook from 'expo-facebook'
 
 const Wrapper = styled(SafeAreaView)`
   flex: 1;
@@ -34,21 +35,32 @@ const Footer = styled(View)`
 `
 
 const ProfileScreen = ({ navigation, route }) => {
-  useEffect(() => {}, [navigation, route])
+  const [user, setUser] = useState({})
+
+  const getUser = async () => {
+    let info = await AsyncStorage.getItem('user')
+    info = await JSON.parse(info)
+    const { id, name, picture } = info
+    const { data } = picture
+    setUser({ id: id, name: name, picture: data.url })
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const handleLogOut = () => {
+    Facebook.logOutAsync()
+    navigation.navigate('Principal')
+    AsyncStorage.clear()
+  }
 
   return (
     <Container>
       <Wrapper>
-        <ProfileHeader
-          name="michelle perez"
-          picture="https://randomuser.me/api/portraits/men/40.jpg"
-        />
-
+        <ProfileHeader name={user.name} picture={user.picture} />
         <Footer>
-          <Text
-            fontFamily="bold"
-            onPress={() => navigation.navigate('Principal')}
-          >
+          <Text fontFamily="bold" onPress={handleLogOut}>
             Cerrar Sesión
           </Text>
         </Footer>

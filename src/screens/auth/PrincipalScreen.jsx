@@ -3,7 +3,7 @@ import { Image, View } from 'react-native'
 import styled from 'styled-components'
 import { Button, Container, Text, Box, Wrapper } from '../../components'
 import logoImage from '../../../assets/logoW.png'
-import { AppState } from 'react-native'
+import { AppState, AsyncStorage } from 'react-native'
 import * as Facebook from 'expo-facebook'
 
 const Logo = styled(Image)`
@@ -49,6 +49,7 @@ const PrincipalScreen = ({ navigation }) => {
         )
         const data = await response.json()
         console.log('Logged in!', data)
+        await AsyncStorage.setItem('user', JSON.stringify(data))
         navigation.navigate('Main')
       } else {
         // type === 'cancel'
