@@ -8,8 +8,8 @@ const SearchScreen = () => {
 
   return (
     <Container pt="6%">
-      <SearchBar />
-      <Wrapper p="10px" pb="80px" loading={loading}>
+      <SearchBar px={'10px'} />
+      <Wrapper mdCol={8} p="10px" pb="80px" loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
           data={data?.results}

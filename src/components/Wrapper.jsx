@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ActivityIndicator, SafeAreaView } from 'react-native'
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native'
 import theme from '../theme/LightTheme'
 import { Row, Col } from 'react-native-responsive-grid-system'
 import { space } from 'styled-system'
@@ -20,21 +25,22 @@ const Spinner = styled(ActivityIndicator)`
 
 const Wrapper = (props) => {
   const { children, loading, mdCol = 6, ...rest } = props
-
   return (
     <Row
       rowStyles={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <Col xs={12} sm={12} md={mdCol} lg={6}>
-        <WrapperStyled {...rest}>
-          {loading ? (
-            <Spinner size="large" primary color={theme.colors.primary} />
-          ) : (
-            <Box flex={1} justifyContent="center" alignItems="center">
-              {children}
-            </Box>
-          )}
-        </WrapperStyled>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <WrapperStyled {...rest}>
+            {loading ? (
+              <Spinner size="large" primary color={theme.colors.primary} />
+            ) : (
+              <Box flex={1} justifyContent="center" alignItems="center">
+                {children}
+              </Box>
+            )}
+          </WrapperStyled>
+        </TouchableWithoutFeedback>
       </Col>
     </Row>
   )

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { View, TextInput } from 'react-native'
+import { View, Keyboard } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
+import Box from './Box'
+import Input from './Input'
 
 const Container = styled(View)`
   height: 70px;
@@ -10,46 +12,38 @@ const Container = styled(View)`
   position: relative;
 `
 
-const Input = styled(TextInput)`
-  padding-left: 17px;
-  padding-right: 17px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-right-width: 0px;
-  border-bottom-width: 0px;
-  border-radius: 50px;
-  background-color: #2c2c2c;
-  color: gray;
-  font-size: 18px;
-  min-height: 60px;
-`
-
 const Icon = styled(FontAwesome5)`
   position: absolute;
-  right: 30px;
-  top: 25px;
+  right: 25px;
+  top: 18px;
   z-index: 9;
   color: #575757;
+  height: 100%;
+  width: 30px;
 `
 
 const SearchBar = (props) => {
   const [text, setText] = useState('')
   const { children, ...rest } = props
+
+  const handleClear = () => {
+    Keyboard.dismiss()
+    setText('')
+  }
+
   return (
-    <Container {...rest}>
+    <Box {...rest}>
       {text.length > 0 ? (
-        <Icon onPress={() => setText('')} name="times" size={26} />
+        <Icon onPress={handleClear} name="times" size={24} />
       ) : (
-        <Icon name="search" size={26} />
+        <Icon name="search" size={24} />
       )}
       <Input
-        placeholderTextColor="gray"
         placeholder="Buscar..."
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         onChangeText={(text) => setText(text)}
         value={text}
       />
-    </Container>
+    </Box>
   )
 }
 

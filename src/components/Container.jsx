@@ -1,11 +1,6 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import {
-  ActivityIndicator,
-  View,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native'
+import { View, TouchableOpacity, ImageBackground, Keyboard } from 'react-native'
 import { space } from 'styled-system'
 import { FontAwesome } from '@expo/vector-icons'
 import Image from '../../assets/bg.jpg'
@@ -48,11 +43,7 @@ const Container = (props) => {
             />
           </BackButton>
         )}
-        {loading ? (
-          <ActivityIndicator size="large" color={theme.colors.primary} />
-        ) : (
-          children
-        )}
+        {children}
       </Background>
     </ContainerStyled>
   )

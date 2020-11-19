@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components'
 import { Button, Container, Text, Box, Input, Wrapper } from '../../components'
+import { isValidEmail } from '../../lib/utils'
 
 const Footer = styled(View)`
   position: absolute;
@@ -17,9 +18,25 @@ const LoginScreen = ({ navigation }) => {
     setInfo({ ...info, [name]: value })
   }
 
+  const validForm = () => {
+    let isValid = true
+
+    if (!info.email || !info.password) {
+      setMsg('Ingresa tus credenciales')
+      isValid = false
+    } else {
+      isValid = isValidEmail(info.email)
+      if (!isValid) setMsg('Email invalido')
+    }
+
+    return isValid
+  }
+
   const handleSubmit = () => {
+    if (!validForm()) return
+
     const form = new FormData()
-    form.append('email', info.email)
+    form.append('email', info.email.toLowerCase())
     form.append('password', info.password)
 
     setLoading(true)
@@ -29,8 +46,10 @@ const LoginScreen = ({ navigation }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.token) navigation.navigate('Main')
-        console.log('data: ', data)
+        if (data?.token) {
+          navigation.navigate('Main')
+          return
+        }
         setMsg(data.message)
         setLoading(false)
       })
@@ -52,26 +71,31 @@ const LoginScreen = ({ navigation }) => {
           </Text>
         </Box>
         <Box mb={3}>
-          <Text fontSize="12px" color="error">
+          <Text fontSize="14px" color="error">
             {msg}
           </Text>
         </Box>
         <Input
           value={info.email}
-          placeholder="email"
+          placeholder="Email"
           onChangeText={(value) => handleChangeText('email', value)}
         />
         <Input
+          type="password"
           value={info.password}
-          secureTextEntry={true}
-          placeholder="password"
+          placeholder="Password"
           onChangeText={(value) => handleChangeText('password', value)}
           mb={3}
         />
         <Button variant="primary" fluid onPress={handleSubmit}>
           Iniciar Sesión
         </Button>
-        <Text isLink mt={3} onPress={() => navigation.navigate('Recovery')}>
+        <Text
+          mb={'100px'}
+          isLink
+          mt={3}
+          onPress={() => navigation.navigate('Recovery')}
+        >
           ¿Olvidaste tu contraseña?
         </Text>
         <Footer>

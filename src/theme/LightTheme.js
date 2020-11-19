@@ -10,7 +10,7 @@ const theme = {
     shade7: '#777',
     shade9: '#999',
     light: '#ffffff',
-    error: 'tomato',
+    error: '#DB5A6B',
   },
   fonts: {
     thin: 'Roboto_100Thin',
