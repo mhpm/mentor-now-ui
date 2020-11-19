@@ -15,6 +15,7 @@
     "@use-expo/font": "^2.0.0",
     "expo": "~39.0.2",
     "expo-cli": "^3.28.5",
+    "expo-facebook": "~9.0.0",
     "expo-font": "~8.3.0",
     "expo-status-bar": "~1.0.2",
     "global": "^4.4.0",

@@ -28,6 +28,11 @@
     "description": "Mentor now app",
     "android": {
       "package": "com.mhpm.mentornow"
+    },
+    "facebookScheme": {
+      "facebookAppId": "1007474016423973",
+      "facebookDisplayName": "mentornow"
     }
+    
   }
 }
