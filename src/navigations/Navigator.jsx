@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import AuthContext from '../context/auth/authContext'
 import theme from '../theme/LightTheme'
 
 // Auth Screens
@@ -110,11 +111,16 @@ function Main() {
 }
 
 function RootNavigator() {
+  const { userToken } = useContext(AuthContext)
+  console.log('userToken: ', userToken)
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Auth" component={Auth} />
-        <Stack.Screen name="Main" component={Main} />
+        {userToken == null ? (
+          <Stack.Screen name="Auth" component={Auth} />
+        ) : (
+          <Stack.Screen name="Main" component={Main} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   )

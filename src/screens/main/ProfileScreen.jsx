@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
-import { View, SafeAreaView, AsyncStorage } from 'react-native'
+import { View, SafeAreaView } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Container from '../../components/Container'
-import Text from '../../components/Text'
-import { ProfileHeader } from '../../components'
-import * as Facebook from 'expo-facebook'
+import { ProfileHeader, Text, Box } from '../../components'
+import AuthContext from '../../context/auth/authContext'
 
 const Wrapper = styled(SafeAreaView)`
   flex: 1;
@@ -34,33 +34,20 @@ const Footer = styled(View)`
   width: 100%;
 `
 
-const ProfileScreen = ({ navigation, route }) => {
-  const [user, setUser] = useState({})
-
-  const getUser = async () => {
-    let info = await AsyncStorage.getItem('user')
-    info = await JSON.parse(info)
-    const { id, name, picture } = info
-    const { data } = picture
-    setUser({ id: id, name: name, picture: data.url })
-  }
-
-  useEffect(() => {
-    getUser()
-  }, [])
-
-  const handleLogOut = () => {
-    Facebook.logOutAsync()
-    navigation.navigate('Principal')
-    AsyncStorage.clear()
-  }
+const ProfileScreen = ({ navigation }) => {
+  const { signOut, user } = useContext(AuthContext)
 
   return (
     <Container>
       <Wrapper>
         <ProfileHeader name={user.name} picture={user.picture} />
+        <Box mt="120px">
+          <Text fontFamily="light" mx="auto">
+            {user.email}
+          </Text>
+        </Box>
         <Footer>
-          <Text fontFamily="bold" onPress={handleLogOut}>
+          <Text fontFamily="bold" onPress={signOut}>
             Cerrar Sesión
           </Text>
         </Footer>

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Image, View } from 'react-native'
+import AuthContext from '../../context/auth/authContext'
 import styled from 'styled-components'
-import { Button, Container, Text, Box, Wrapper } from '../../components'
+import { Button, Container, Text, Wrapper } from '../../components'
 import logoImage from '../../../assets/logoW.png'
-import { AppState, AsyncStorage } from 'react-native'
-import * as Facebook from 'expo-facebook'
+import { AppState } from 'react-native'
 
 const Logo = styled(Image)`
   width: 200px;
@@ -18,52 +18,22 @@ const Footer = styled(View)`
 `
 
 const PrincipalScreen = ({ navigation }) => {
-  useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange)
-  }, [])
+  const { signInFacebook } = useContext(AuthContext)
+  // useEffect(() => {
+  //   AppState.addEventListener('change', handleAppStateChange)
+  // }, [])
 
-  handleAppStateChange = (nextAppState) => {
-    if (nextAppState === 'active') {
-      console.log('avtive')
-    }
-  }
+  // handleAppStateChange = (nextAppState) => {
+  //   if (nextAppState === 'active') {
+  //     console.log('avtive')
+  //   }
+  // }
 
-  const logInFacebook = async () => {
-    try {
-      await Facebook.initializeAsync({
-        appId: '1007474016423973',
-      })
-      const {
-        type,
-        token,
-        expirationDate,
-        permissions,
-        declinedPermissions,
-      } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      })
-      if (type === 'success') {
-        // Get the user's name using Facebook's Graph API
-        const response = await fetch(
-          `https://graph.facebook.com/me?fields=id,name,picture.type(large),email&access_token=${token}`
-        )
-        const data = await response.json()
-        console.log('Logged in!', data)
-        await AsyncStorage.setItem('user', JSON.stringify(data))
-        navigation.navigate('Main')
-      } else {
-        // type === 'cancel'
-        console.log('login cancel')
-      }
-    } catch ({ message }) {
-      console.log(`Facebook Login Error: ${message}`)
-    }
-  }
   return (
     <Container p={4}>
       <Wrapper>
         <Logo source={logoImage}></Logo>
-        <Button fluid variant="blue" onPress={logInFacebook}>
+        <Button fluid variant="blue" onPress={signInFacebook}>
           Iniciar con Facebook
         </Button>
         <Button fluid onPress={() => navigation.navigate('Login')}>

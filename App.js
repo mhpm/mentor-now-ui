@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './src/theme/LightTheme'
 import { AppLoading } from 'expo'
 import { useFonts } from '@use-expo/font'
+import AuthState from './src/context/auth/authState'
 
 const App = () => {
   let [fontsLoaded] = useFonts({
@@ -20,7 +21,9 @@ const App = () => {
   else
     return (
       <ThemeProvider theme={theme}>
-        <Navigator />
+        <AuthState>
+          <Navigator />
+        </AuthState>
       </ThemeProvider>
     )
 }
