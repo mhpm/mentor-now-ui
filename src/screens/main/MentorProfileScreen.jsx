@@ -11,7 +11,6 @@ import {
   ProfileHeader,
 } from '../../components/'
 import { View, ScrollView } from 'react-native'
-import { Row, Col } from 'react-native-responsive-grid-system'
 
 const Footer = styled(View)`
   display: flex;
@@ -63,7 +62,7 @@ const MentorProfileScreen = ({ route }) => {
               Mentorias impartidas: {Math.floor(rating * 4)}
             </Text>
             <Rating primary value={rating} />
-            <Button style={{ marginTop: 20 }} variant="primary">
+            <Button fluid style={{ marginTop: 20 }} variant="primary">
               AGENDAR
             </Button>
 

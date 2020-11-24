@@ -9,70 +9,26 @@ import {
   Wrapper,
 } from '../../components'
 import { FlatList } from 'react-native'
-
-const List = styled(FlatList)`
-  width: 100%;
-`
-
-const topics = [
-  {
-    _id: '0',
-    topic: 'matemáticas',
-    mentores: 11,
-  },
-  {
-    _id: '1',
-    topic: 'ciencias',
-    mentores: 30,
-  },
-  {
-    _id: '2',
-    topic: 'progración',
-    mentores: 50,
-  },
-  {
-    _id: '3',
-    topic: 'arte',
-    mentores: 11,
-  },
-  {
-    _id: '4',
-    topic: 'musica',
-    mentores: 15,
-  },
-  {
-    _id: '5',
-    topic: 'Ingles',
-    mentores: 50,
-  },
-  {
-    _id: '6',
-    topic: 'Cafetería',
-    mentores: 11,
-  },
-  {
-    _id: '7',
-    topic: 'Algoritmos',
-    mentores: 15,
-  },
-]
+import Topics from '../../mock/Topics'
 
 const CatalogScreen = () => {
-  const [data, setData] = useState(topics)
+  const [data, setData] = useState(Topics)
   const [loading, setLoading] = useState(false)
 
   return (
     <Container pt="6%">
-      <SearchBar />
-      <Wrapper p="10px" pb="80px" mdCol={8} loading={loading}>
+      <SearchBar px={'10px'} />
+      <Wrapper px="10px" mdCol={8} loading={loading}>
         <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
           <Text mx="auto" fontFamily="black">
             Top Mas Solicitadas
           </Text>
         </Box>
-        <List
+        <FlatList
+          style={{ width: 100 + '%' }}
           data={data}
           renderItem={(item) => <TopicCard key={item._id} item={item.item} />}
+          contentContainerStyle={{ paddingBottom: 70 }}
           keyExtractor={(item) => item._id}
         />
       </Wrapper>

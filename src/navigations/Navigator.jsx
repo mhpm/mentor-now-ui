@@ -7,15 +7,15 @@ import AuthContext from '../context/auth/authContext'
 import theme from '../theme/LightTheme'
 
 // Auth Screens
-import PrincipalScreen from '../screens/auth/PrincipalScreen'
 import LoginScreen from '../screens/auth/LoginScreen'
-import RegisterScreen from '../screens/auth/RegisterScreen'
+import SignInScreen from '../screens/auth/SignInScreen'
+import SignUpScreen from '../screens/auth/SignUpScreen'
 import RecoveryScreen from '../screens/auth/RecoveryScreen'
 
 // Main Screens
 import HomeScreen from '../screens/main/HomeScreen'
 import CatalogScreen from '../screens/main/CatalogScreen'
-import SearchScreen from '../screens/main/SearchScreen'
+import MentorsScreen from '../screens/main/MentorsScreen'
 import ProfileScreen from '../screens/main/ProfileScreen'
 import FavoritesScreen from '../screens/main/FavoritesScreen'
 
@@ -28,9 +28,9 @@ const Tab = createBottomTabNavigator()
 function Auth() {
   return (
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name="Principal" component={PrincipalScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="SignIn" component={SignInScreen} />
+      <Stack.Screen name="Register" component={SignUpScreen} />
       <Stack.Screen name="Recovery" component={RecoveryScreen} />
     </Stack.Navigator>
   )
@@ -52,7 +52,7 @@ function Main() {
           if (route.name === 'Catalog') {
             iconName = 'book'
           }
-          if (route.name === 'Search') {
+          if (route.name === 'Mentors') {
             iconName = 'user-tie'
           }
           if (route.name === 'Favorites') {
@@ -88,13 +88,9 @@ function Main() {
         },
       }}
     >
-      <Tab.Screen
-        style={{ backgroundColor: 'red' }}
-        name="Home"
-        component={HomeScreen}
-      />
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Catalog" component={CatalogScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Mentors" component={MentorsScreen} />
       <Tab.Screen name="Favorites" component={FavoritesScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen
@@ -115,7 +111,14 @@ function RootNavigator() {
   console.log('userToken: ', userToken)
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
+      <Stack.Navigator
+        screenOptions={{
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+        }}
+        headerMode="none"
+        animation="fade"
+      >
         {userToken == null ? (
           <Stack.Screen name="Auth" component={Auth} />
         ) : (

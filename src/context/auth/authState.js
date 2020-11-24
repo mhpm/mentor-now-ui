@@ -88,8 +88,8 @@ const AuthState = (props) => {
 
         dispatch({ type: SIGN_IN, token: token })
       },
-      signOut: () => {
-        Facebook.logOutAsync()
+      signOut: async () => {
+        await Facebook.logOutAsync()
         AsyncStorage.clear()
         dispatch({ type: SIGN_OUT })
       },

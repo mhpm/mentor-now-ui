@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
-import { View } from 'react-native'
+import React, { useEffect, useContext } from 'react'
+import { Image, View } from 'react-native'
+import AuthContext from '../../context/auth/authContext'
 import styled from 'styled-components'
-import { Button, Container, Text, Box, Input, Wrapper } from '../../components'
-import { isValidEmail } from '../../lib/utils'
+import { Button, Container, Text, Wrapper } from '../../components'
+import logoImage from '../../../assets/logoW.png'
+import { AppState } from 'react-native'
+
+const Logo = styled(Image)`
+  width: 200px;
+  height: 50px;
+  margin-bottom: 70px;
+`
 
 const Footer = styled(View)`
   position: absolute;
@@ -10,98 +18,35 @@ const Footer = styled(View)`
 `
 
 const LoginScreen = ({ navigation }) => {
-  const [info, setInfo] = useState({})
-  const [loading, setLoading] = useState(false)
-  const [msg, setMsg] = useState(null)
+  const { signInFacebook } = useContext(AuthContext)
+  // useEffect(() => {
+  //   AppState.addEventListener('change', handleAppStateChange)
+  // }, [])
 
-  const handleChangeText = (name, value) => {
-    setInfo({ ...info, [name]: value })
-  }
-
-  const validForm = () => {
-    let isValid = true
-
-    if (!info.email || !info.password) {
-      setMsg('Ingresa tus credenciales')
-      isValid = false
-    } else {
-      isValid = isValidEmail(info.email)
-      if (!isValid) setMsg('Email invalido')
-    }
-
-    return isValid
-  }
-
-  const handleSubmit = () => {
-    if (!validForm()) return
-
-    const form = new FormData()
-    form.append('email', info.email.toLowerCase())
-    form.append('password', info.password)
-
-    setLoading(true)
-    fetch('http://45.55.110.117/mentornow-api/api/public/users/login', {
-      method: 'POST',
-      body: form,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.token) {
-          navigation.navigate('Main')
-          return
-        }
-        setMsg(data.message)
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.error('Error: ', error)
-        setMsg(
-          'Parece que hubo un error inesperado, intenta iniciar mas tarde.'
-        )
-        setLoading(false)
-      })
-  }
+  // handleAppStateChange = (nextAppState) => {
+  //   if (nextAppState === 'active') {
+  //     console.log('avtive')
+  //   }
+  // }
 
   return (
-    <Container p={3}>
-      <Wrapper loading={loading}>
-        <Box p={2} width="100%">
-          <Text fontFamily="black" fontSize="26px" mx="auto" mb={4}>
-            Inicio de Sesión
-          </Text>
-        </Box>
-        <Box mb={3}>
-          <Text fontSize="14px" color="error">
-            {msg}
-          </Text>
-        </Box>
-        <Input
-          value={info.email}
-          placeholder="Email"
-          onChangeText={(value) => handleChangeText('email', value)}
-        />
-        <Input
-          type="password"
-          value={info.password}
-          placeholder="Password"
-          onChangeText={(value) => handleChangeText('password', value)}
-          mb={3}
-        />
-        <Button variant="primary" fluid onPress={handleSubmit}>
-          Iniciar Sesión
+    <Container p={4}>
+      <Wrapper>
+        <Logo source={logoImage}></Logo>
+        <Button fluid variant="blue" onPress={signInFacebook}>
+          Iniciar con Facebook
         </Button>
-        <Text
-          mb={'100px'}
-          isLink
-          mt={3}
-          onPress={() => navigation.navigate('Recovery')}
-        >
-          ¿Olvidaste tu contraseña?
+        <Button fluid onPress={() => navigation.navigate('SignIn')}>
+          Iniciar con Email
+        </Button>
+        <Text fontFamily="light" mt={3} mb={5}>
+          ¿Eres nuevo?{' '}
+          <Text isLink onPress={() => navigation.navigate('SignUp')}>
+            Registrate
+          </Text>
         </Text>
         <Footer>
-          <Text fontFamily="bold" onPress={() => navigation.goBack()}>
-            Cancelar
-          </Text>
+          <Text fontFamily="bold">MentorNow &reg; 2020</Text>
         </Footer>
       </Wrapper>
     </Container>
