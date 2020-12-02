@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import {
   Container,
   Button,
@@ -10,17 +9,7 @@ import {
   Box,
   ProfileHeader,
 } from '../../components/'
-import { View, ScrollView } from 'react-native'
-
-const Footer = styled(View)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 110px;
-  width: 100%;
-`
+import { ScrollView } from 'react-native'
 
 const topics = [
   {
