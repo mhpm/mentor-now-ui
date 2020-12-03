@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { View, SafeAreaView } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import Container from '../../components/Container'
 import { ProfileHeader, Text, Box } from '../../components'
-import AuthContext from '../../context/auth/authContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { signOut } from '../../redux/auth/authActions'
 
 const Wrapper = styled(SafeAreaView)`
   flex: 1;
@@ -24,7 +24,8 @@ const Footer = styled(View)`
 `
 
 const ProfileScreen = ({ navigation }) => {
-  const { signOut, user } = useContext(AuthContext)
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth)
 
   return (
     <Container>
@@ -36,7 +37,7 @@ const ProfileScreen = ({ navigation }) => {
           </Text>
         </Box>
         <Footer>
-          <Text fontFamily="bold" onPress={signOut}>
+          <Text fontFamily="bold" onPress={() => dispatch(signOut)}>
             Cerrar Sesión
           </Text>
         </Footer>

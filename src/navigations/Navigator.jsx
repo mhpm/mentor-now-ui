@@ -3,7 +3,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import AuthContext from '../context/auth/authContext'
+import { useDispatch, useSelector } from 'react-redux'
 import theme from '../theme/LightTheme'
 
 // Auth Screens
@@ -107,8 +107,8 @@ function Main() {
 }
 
 function RootNavigator() {
-  const { userToken } = useContext(AuthContext)
-  console.log('userToken: ', userToken)
+  const { token } = useSelector((state) => state.auth)
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -119,7 +119,7 @@ function RootNavigator() {
         headerMode="none"
         animation="fade"
       >
-        {userToken == null ? (
+        {token == null ? (
           <Stack.Screen name="Auth" component={Auth} />
         ) : (
           <Stack.Screen name="Main" component={Main} />

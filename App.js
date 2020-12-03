@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler'
 import React from 'react'
 import Navigator from './src/navigations/Navigator'
+import { Provider } from 'react-redux'
+import { store, persistor } from './src/redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
+
 import { ThemeProvider } from 'styled-components'
 import theme from './src/theme/LightTheme'
+
 import { AppLoading } from 'expo'
 import { useFonts } from '@use-expo/font'
-import AuthState from './src/context/auth/authState'
 
 const App = () => {
   let [fontsLoaded] = useFonts({
@@ -20,11 +24,13 @@ const App = () => {
   if (!fontsLoaded) return <AppLoading />
   else
     return (
-      <ThemeProvider theme={theme}>
-        <AuthState>
-          <Navigator />
-        </AuthState>
-      </ThemeProvider>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <Navigator />
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
     )
 }
 

@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { Image, View } from 'react-native'
-import AuthContext from '../../context/auth/authContext'
 import styled from 'styled-components'
 import { Button, Container, Text, Wrapper } from '../../components'
 import logoImage from '../../../assets/logoW.png'
-import { AppState } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { facebookSignIn } from '../../redux/auth/authActions'
 
 const Logo = styled(Image)`
   width: 200px;
@@ -18,22 +18,14 @@ const Footer = styled(View)`
 `
 
 const LoginScreen = ({ navigation }) => {
-  const { signInFacebook } = useContext(AuthContext)
-  // useEffect(() => {
-  //   AppState.addEventListener('change', handleAppStateChange)
-  // }, [])
-
-  // handleAppStateChange = (nextAppState) => {
-  //   if (nextAppState === 'active') {
-  //     console.log('avtive')
-  //   }
-  // }
+  const dispatch = useDispatch()
+  const signIn = () => dispatch(facebookSignIn)
 
   return (
     <Container p={4}>
       <Wrapper>
         <Logo source={logoImage}></Logo>
-        <Button fluid variant="blue" onPress={signInFacebook}>
+        <Button fluid variant="blue" onPress={signIn}>
           Iniciar con Facebook
         </Button>
         <Button fluid onPress={() => navigation.navigate('SignIn')}>
