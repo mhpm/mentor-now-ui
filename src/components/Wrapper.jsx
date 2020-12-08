@@ -46,4 +46,4 @@ const Wrapper = (props) => {
   )
 }
 
-export default Wrapper
+export default React.memo(Wrapper)

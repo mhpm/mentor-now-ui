@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -30,7 +30,7 @@ function Auth() {
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignIn" component={SignInScreen} />
-      <Stack.Screen name="Register" component={SignUpScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Recovery" component={RecoveryScreen} />
     </Stack.Navigator>
   )
@@ -129,4 +129,4 @@ function RootNavigator() {
   )
 }
 
-export default RootNavigator
+export default React.memo(RootNavigator)

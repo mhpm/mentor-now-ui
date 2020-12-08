@@ -35,16 +35,19 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSignOut: false,
+        isLoading: false,
         token: action.token,
         user: action.user,
+        error: null,
       }
     case SIGN_OUT_SUCCESS:
       return {
         ...state,
         isSignOut: true,
+        isLoading: false,
         token: null,
-        error: null,
         user: {},
+        error: null,
       }
     case RESTORE_TOKEN_FAILURE:
     case SIGN_IN_FAILURE:

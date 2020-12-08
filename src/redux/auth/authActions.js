@@ -1,5 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Facebook from 'expo-facebook'
+Facebook.initializeAsync({
+  appId: '1007474016423973',
+})
 
 import {
   RESTORE_TOKEN_START,
@@ -14,19 +16,9 @@ import {
   SIGN_OUT_SUCCESS,
 } from './authTypes'
 
-const getUser = async () => {
-  let info = await AsyncStorage.getItem('user')
-  info = await JSON.parse(info)
-  const { id, name, email, picture } = info
-  const { data } = picture
-  return { id: id, name: name, email: email, picture: data.url }
-}
-
 export const restoreToken = async (dispatch) => {
   try {
     dispatch({ type: RESTORE_TOKEN_START })
-    const token = await AsyncStorage.getItem('token')
-    const user = await getUser()
     dispatch({ type: RESTORE_TOKEN_SUCCESS, token: token, user: user })
   } catch ({ message }) {
     dispatch({ type: RESTORE_TOKEN_FAILURE, error: message })
@@ -36,10 +28,6 @@ export const restoreToken = async (dispatch) => {
 export const facebookSignIn = async (dispatch) => {
   try {
     dispatch({ type: FACEBOOK_SIGN_IN_START })
-
-    await Facebook.initializeAsync({
-      appId: '1007474016423973',
-    })
 
     const {
       type,

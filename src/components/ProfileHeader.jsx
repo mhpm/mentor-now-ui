@@ -31,7 +31,7 @@ const Avatar = styled(Image)`
   margin: 0px;
   padding: 0px;
 `
-const Box = ({ name, picture }) => {
+const ProfileHeader = ({ name, picture }) => {
   return (
     <Header>
       <Text fontFamily="bold" fontSize="26px">
@@ -44,4 +44,4 @@ const Box = ({ name, picture }) => {
   )
 }
 
-export default Box
+export default React.memo(ProfileHeader)

@@ -25,4 +25,4 @@ const Box = (props) => {
   return <StyledBox {...props} />
 }
 
-export default Box
+export default React.memo(Box)

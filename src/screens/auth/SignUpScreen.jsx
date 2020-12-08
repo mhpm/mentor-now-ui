@@ -67,7 +67,7 @@ const SignUpScreen = ({ navigation }) => {
       <Wrapper loading={loading}>
         <Box p={2} width="100%">
           <Text fontFamily="black" fontSize="26px" mx="auto" mb={4}>
-            Inicio de Sesión
+            Crear Cuenta
           </Text>
         </Box>
         <Box mb={3}>
