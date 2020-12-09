@@ -13,7 +13,7 @@ import {
 } from './authTypes'
 
 const INITIAL_STATE = {
-  isLoading: true,
+  isLoading: false,
   isSignOut: true,
   token: null,
   error: null,
@@ -29,6 +29,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
+        error: null,
       }
     case RESTORE_TOKEN_SUCCESS:
     case SIGN_IN_SUCCESS:

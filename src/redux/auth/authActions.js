@@ -73,15 +73,19 @@ export const signIn = (form) => async (dispatch) => {
       }
     )
 
-    const info = await res.json()
-    const { id, name, email, picture } = info
-    const { data } = picture
-    const user = { id: id, name: name, email: email, picture: data.url }
+    const data = await res.json()
+    const { id, first_name, last_name, role } = data.content
+    const user = { id, name: first_name + ' ' + last_name, role }
+
+    console.log('====================================')
+    console.log(data)
+    console.log('====================================')
 
     if (data?.token) {
-      dispatch({ type: SIGN_IN_SUCCESS, token: data.token })
+      dispatch({ type: SIGN_IN_SUCCESS, token: data.token, user: user })
       return
     }
+
     dispatch({ type: SIGN_IN_FAILURE, error: data.message })
   } catch ({ message }) {
     dispatch({ type: SIGN_IN_FAILURE, error: message })

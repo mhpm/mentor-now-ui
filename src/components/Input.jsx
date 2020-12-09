@@ -18,7 +18,7 @@ const StyledInput = styled(TextInput)`
   border-right-width: 0px;
   border-bottom-width: 0px;
   border-radius: 50px;
-  background-color: #2c2c2c;
+  background-color: #2c2c2c !important;
   color: gray;
   font-size: 17px;
   min-height: 60px;

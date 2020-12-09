@@ -7,7 +7,6 @@ import { FlatList } from 'react-native'
 
 const FavoritesScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=10')
-
   return (
     <Container p="10px">
       <Wrapper mt="6%" loading={loading}>

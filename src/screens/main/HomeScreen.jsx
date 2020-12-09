@@ -1,10 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import Wrapper from '../../components/Wrapper'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const HomeScreen = ({ navigation }) => {
+  //AsyncStorage.clear()
   return (
     <Container p={4}>
       <Wrapper>
