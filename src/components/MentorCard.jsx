@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { AntDesign } from '@expo/vector-icons'
 import Rating from './Rating'
 import Text from './Text'
-import theme from '../theme/LightTheme'
 
 const Container = styled(Pressable)`
   flex-direction: row;

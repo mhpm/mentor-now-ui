@@ -17,14 +17,6 @@ const SignInScreen = ({ navigation }) => {
     <Container bg="dark" p={3}>
       <Wrapper>
         <SignInForm />
-        <Text
-          mb={'100px'}
-          isLink
-          mt={3}
-          onPress={() => navigation.navigate('Recovery')}
-        >
-          ¿Olvidaste tu contraseña?
-        </Text>
         <Footer>
           <Text fontFamily="bold" onPress={() => navigation.goBack()}>
             Cancelar

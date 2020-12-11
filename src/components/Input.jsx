@@ -21,11 +21,10 @@ const StyledInput = styled(TextInput)`
   border-bottom-width: 0px;
   border-radius: 20px;
   background-color: #2c2c2c !important;
-  color: #cecece;
+  color: #fff;
   font-size: 17px;
   min-height: 60px;
   width: 100%;
-  font-family: 'Roboto_700Bold';
   ${space}
   ${color}
   ${fontSize}
@@ -65,6 +64,7 @@ const Input = (props) => {
       )} */}
 
       <StyledInput
+        fontFamily="bold"
         secureTextEntry={props.type === 'password' && toggle}
         placeholderTextColor="#999"
         {...props}

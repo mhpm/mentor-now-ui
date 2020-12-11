@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import Button from './Button'
 import Text from './Text'
@@ -10,46 +9,60 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signIn } from '../redux/auth/authActions'
 import * as Yup from 'yup'
 
-const SignInForm = () => {
-  const navigation = useNavigation()
+const SignUpForm = () => {
   const dispatch = useDispatch()
   const { error, isLoading } = useSelector((state) => state.auth)
 
   const formik = useFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
+      confirmPassword: '',
     },
     validationSchema: Yup.object({
+      name: Yup.string().required('Campo requerido'),
       email: Yup.string().email('Correo invalido').required('Campo requerido'),
       password: Yup.string().required('Campo requerido'),
+      confirmPassword: Yup.string().required('Campo requerido'),
     }),
     onSubmit: (values) => handleSubmit(values),
   })
 
-  const handleSubmit = ({ email, password }) => {
+  const handleSubmit = ({ name, email, password, confirmPassword }) => {
     const form = new FormData()
+    form.append('name', name)
     form.append('email', email.toLowerCase())
     form.append('password', password)
+    form.append('confirmPassword', confirmPassword)
 
     dispatch(signIn(form))
   }
 
   return (
-    <Wrapper loading={isLoading} mb="100px">
+    <Wrapper loading={isLoading} mb="30%">
       <Box p={2}>
-        <Text fontFamily="black" fontSize="26px" mx="auto" mb={3}>
-          Inicio de Sesión
+        <Text fontFamily="black" fontSize="26px" mx="auto" mb={1}>
+          Crear Cuenta
         </Text>
       </Box>
-      <Box mb={3}>
+      <Box mb={2}>
         <Text fontSize="14px" fontFamily="bold" color="error">
           {error}
         </Text>
       </Box>
       <Input
         bg="shade5"
-        label="Emial:"
+        autoCompleteType="off"
+        placeholder="Nombre"
+        onChangeText={formik.handleChange('name')}
+        value={formik.values.name}
+        textHelper={
+          formik.errors.name && formik.touched.name ? formik.errors.name : null
+        }
+      />
+      <Input
+        bg="shade5"
         autoCompleteType="off"
         placeholder="Email"
         onChangeText={formik.handleChange('email')}
@@ -62,9 +75,8 @@ const SignInForm = () => {
       />
       <Input
         bg="shade5"
-        label="Password:"
         type="password"
-        placeholder="Password"
+        placeholder="Contraseña"
         onChangeText={formik.handleChange('password')}
         value={formik.values.password}
         textHelper={
@@ -73,14 +85,23 @@ const SignInForm = () => {
             : null
         }
       />
+      <Input
+        bg="shade5"
+        type="password"
+        placeholder="Confirmar Contraseña"
+        onChangeText={formik.handleChange('confirmPassword')}
+        value={formik.values.confirmPassword}
+        textHelper={
+          formik.errors.confirmPassword && formik.touched.confirmPassword
+            ? formik.errors.confirmPassword
+            : null
+        }
+      />
       <Button mt="3" variant="primary" fluid onPress={formik.handleSubmit}>
-        Iniciar Sesión
+        Crear Cuenta
       </Button>
-      <Text isLink mt={3} onPress={() => navigation.navigate('Recovery')}>
-        ¿Olvidaste tu contraseña?
-      </Text>
     </Wrapper>
   )
 }
 
-export default memo(SignInForm)
+export default memo(SignUpForm)
