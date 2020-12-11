@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { View, Keyboard } from 'react-native'
+import { Keyboard } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import Box from './Box'
 import Input from './Input'
 
-const Container = styled(View)`
-  height: 70px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-`
-
 const Icon = styled(FontAwesome5)`
   position: absolute;
-  right: 25px;
+  right: 15px;
   top: 18px;
   z-index: 9;
   color: #575757;

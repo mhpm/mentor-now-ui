@@ -1,15 +1,18 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
-import Container from '../../components/Container'
-import MentorCard from '../../components/MentorCard'
-import Wrapper from '../../components/Wrapper'
+import { Container, MentorCard, Wrapper, Box, Text } from '../../components'
 import { FlatList } from 'react-native'
 
 const FavoritesScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=10')
   return (
     <Container p="10px">
-      <Wrapper mt="6%" loading={loading}>
+      <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
+        <Text mx="auto" fontFamily="black">
+          Mentores Favoritos
+        </Text>
+      </Box>
+      <Wrapper mt="1%" loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
           data={data.results}

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import Button from './Button'
 import Text from './Text'
@@ -40,7 +40,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <Wrapper loading={isLoading} mb="30%">
+    <Wrapper loading={isLoading} mb="40%">
       <Box p={2}>
         <Text fontFamily="black" fontSize="26px" mx="auto" mb={1}>
           Crear Cuenta
@@ -104,4 +104,4 @@ const SignUpForm = () => {
   )
 }
 
-export default memo(SignUpForm)
+export default SignUpForm

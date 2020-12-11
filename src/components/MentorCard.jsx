@@ -73,7 +73,14 @@ const MentorCard = ({ item, hearth }) => {
         <Rating primary value={rating} />
       </Column>
       <RightColumn>
-        {hearth && <AntDesign name="heart" size={28} color="white" />}
+        {hearth && (
+          <AntDesign
+            name="heart"
+            size={28}
+            color="white"
+            style={{ paddingRight: 20 }}
+          />
+        )}
       </RightColumn>
     </Container>
   )

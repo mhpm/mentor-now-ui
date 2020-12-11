@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { FontAwesome5 } from '@expo/vector-icons'
 import Box from './Box'
 import Text from './Text'
-import { space, color, fontSize, fontFamily } from 'styled-system'
+import { space, color, fontSize, fontFamily, border } from 'styled-system'
 
 const validateEmail = (email) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -19,7 +19,6 @@ const StyledInput = styled(TextInput)`
   border-left-width: 0px;
   border-right-width: 0px;
   border-bottom-width: 0px;
-  border-radius: 20px;
   background-color: #2c2c2c !important;
   color: #fff;
   font-size: 17px;
@@ -29,6 +28,7 @@ const StyledInput = styled(TextInput)`
   ${color}
   ${fontSize}
   ${fontFamily}
+  ${border}
 `
 
 const Icon = styled(FontAwesome5)`
@@ -57,17 +57,12 @@ const Input = (props) => {
 
   return (
     <Box width="100%" mb={3}>
-      {/* {props.label && (
-        <Text fontFamily="black" pl="2" mb="1" color="shade10" fontSize="14px">
-          {props.label}
-        </Text>
-      )} */}
-
       <StyledInput
         fontFamily="bold"
         secureTextEntry={props.type === 'password' && toggle}
         placeholderTextColor="#999"
         {...props}
+        borderRadius="15px"
       />
       {props.type === 'password' && getEyeIcon()}
       {props.type !== 'password' && props.icon && getIcon()}
