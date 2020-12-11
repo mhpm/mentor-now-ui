@@ -5,6 +5,7 @@ import { Button, Container, Text, Wrapper } from '../../components'
 import logoImage from '../../../assets/logoW.png'
 import { useDispatch } from 'react-redux'
 import { facebookSignIn } from '../../redux/auth/authActions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Logo = styled(Image)`
   width: 200px;
@@ -20,6 +21,7 @@ const Footer = styled(View)`
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const signIn = () => dispatch(facebookSignIn)
+  //AsyncStorage.clear()
 
   return (
     <Container p={4}>

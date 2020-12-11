@@ -72,16 +72,20 @@ export const signIn = (form) => async (dispatch) => {
         body: form,
       }
     )
-
     const data = await res.json()
-    const { id, first_name, last_name, role } = data.content
-    const user = { id, name: first_name + ' ' + last_name, role }
-
-    console.log('====================================')
-    console.log(data)
-    console.log('====================================')
 
     if (data?.token) {
+      const { id, first_name, last_name, role, email } = data.content
+      console.log('====================================')
+      console.log(data.content)
+      console.log('====================================')
+      const user = {
+        id: id,
+        name: first_name + ' ' + last_name,
+        role: role,
+        email: email,
+      }
+
       dispatch({ type: SIGN_IN_SUCCESS, token: data.token, user: user })
       return
     }
