@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components'
-import { Container, Text, Box, Wrapper, SignInForm } from '../../components'
+import { Container, Text, Wrapper, SignInForm } from '../../components'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Footer = styled(View)`
   position: absolute;
@@ -9,8 +10,11 @@ const Footer = styled(View)`
 `
 
 const SignInScreen = ({ navigation }) => {
+  useEffect(() => {
+    AsyncStorage.clear()
+  }, [])
   return (
-    <Container p={3}>
+    <Container bg="dark" p={3}>
       <Wrapper>
         <SignInForm />
         <Text

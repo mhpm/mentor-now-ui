@@ -41,23 +41,37 @@ const SignInForm = () => {
         </Text>
       </Box>
       <Box mb={3}>
-        <Text fontSize="14px" color="error">
+        <Text fontSize="14px" fontFamily="bold" color="error">
           {error}
         </Text>
       </Box>
       <Input
+        bg="shade5"
+        label="Emial:"
         autoCompleteType="off"
         placeholder="Email"
         onChangeText={formik.handleChange('email')}
         value={formik.values.email}
+        textHelper={
+          formik.errors.email && formik.touched.email
+            ? formik.errors.email
+            : null
+        }
       />
       <Input
+        bg="shade5"
+        label="Password:"
         type="password"
         placeholder="Password"
         onChangeText={formik.handleChange('password')}
         value={formik.values.password}
+        textHelper={
+          formik.errors.password && formik.touched.password
+            ? formik.errors.password
+            : null
+        }
       />
-      <Button variant="primary" fluid onPress={formik.handleSubmit}>
+      <Button mt="3" variant="primary" fluid onPress={formik.handleSubmit}>
         Iniciar Sesión
       </Button>
     </Wrapper>

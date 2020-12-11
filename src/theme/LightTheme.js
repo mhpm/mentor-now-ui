@@ -9,8 +9,9 @@ const theme = {
     shade5: '#555',
     shade7: '#777',
     shade9: '#999',
+    shade10: '#cecece',
     light: '#ffffff',
-    error: '#DB5A6B',
+    error: '#fc788a',
   },
   fonts: {
     thin: 'Roboto_100Thin',

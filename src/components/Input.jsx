@@ -3,6 +3,7 @@ import { TextInput } from 'react-native'
 import styled from 'styled-components'
 import { FontAwesome5 } from '@expo/vector-icons'
 import Box from './Box'
+import Text from './Text'
 import { space, color, fontSize, fontFamily } from 'styled-system'
 
 const validateEmail = (email) => {
@@ -11,15 +12,16 @@ const validateEmail = (email) => {
 }
 
 const StyledInput = styled(TextInput)`
+  position: relative;
   padding-left: 17px;
   padding-right: 17px;
   border-top-width: 0px;
   border-left-width: 0px;
   border-right-width: 0px;
   border-bottom-width: 0px;
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: #2c2c2c !important;
-  color: gray;
+  color: #cecece;
   font-size: 17px;
   min-height: 60px;
   width: 100%;
@@ -35,16 +37,17 @@ const Icon = styled(FontAwesome5)`
   right: 25px;
   top: 18px;
   z-index: 9;
-  color: #575757;
   height: 100%;
   width: 30px;
+  ${color}
 `
 
 const Input = (props) => {
   const [toggle, setToggle] = useState(true)
 
-  const getPassIcon = () => (
+  const getEyeIcon = () => (
     <Icon
+      color="shade10"
       name={toggle ? 'eye-slash' : 'eye'}
       onPress={() => setToggle(!toggle)}
       size={24}
@@ -54,14 +57,25 @@ const Input = (props) => {
   const getIcon = () => <Icon name={props.icon} size={24} />
 
   return (
-    <Box width="100%" mb={2}>
-      {props.type === 'password' && getPassIcon()}
-      {props.type !== 'password' && props.icon && getIcon()}
+    <Box width="100%" mb={3}>
+      {/* {props.label && (
+        <Text fontFamily="black" pl="2" mb="1" color="shade10" fontSize="14px">
+          {props.label}
+        </Text>
+      )} */}
+
       <StyledInput
         secureTextEntry={props.type === 'password' && toggle}
-        placeholderTextColor="gray"
+        placeholderTextColor="#999"
         {...props}
       />
+      {props.type === 'password' && getEyeIcon()}
+      {props.type !== 'password' && props.icon && getIcon()}
+      {props.textHelper && (
+        <Text pl="2" color="error" fontFamily="bold" fontSize="12px">
+          {props.textHelper}
+        </Text>
+      )}
     </Box>
   )
 }

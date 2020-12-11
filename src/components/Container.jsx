@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { View, TouchableOpacity, ImageBackground, Keyboard } from 'react-native'
-import { space } from 'styled-system'
+import { View, TouchableOpacity, ImageBackground } from 'react-native'
+import { space, color } from 'styled-system'
 import { FontAwesome } from '@expo/vector-icons'
 import Image from '../../assets/bg.jpg'
 import styled from 'styled-components'
@@ -15,6 +15,7 @@ const ContainerStyled = styled(View)`
 `
 const Background = styled(ImageBackground)`
   ${space}
+  ${color}
   flex: 1;
   width: 100%;
 `
@@ -33,7 +34,7 @@ const Container = (props) => {
 
   return (
     <ContainerStyled>
-      <Background {...rest} source={Image}>
+      <Background {...rest} source={props.bg ? null : Image}>
         {icon && (
           <BackButton onPress={() => navigation.goBack()}>
             <FontAwesome
