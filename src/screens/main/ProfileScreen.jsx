@@ -30,7 +30,10 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <Container>
       <Wrapper>
-        <ProfileHeader name={user.name} picture={user.picture} />
+        <ProfileHeader
+          name={user.first_name + ' ' + user.last_name}
+          picture={user.picture}
+        />
         <Box mt="120px">
           <Text fontFamily="light" mx="auto">
             {user.email}

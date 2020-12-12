@@ -1,14 +1,15 @@
 import {
-  RESTORE_TOKEN_START,
-  RESTORE_TOKEN_SUCCESS,
-  RESTORE_TOKEN_FAILURE,
   FACEBOOK_SIGN_IN_START,
+  FACEBOOK_SIGN_IN_SUCCESS,
+  FACEBOOK_SIGN_IN_FAILURE,
   EMAIL_SIGN_IN_START,
   SIGN_OUT_START,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
+  EMAIL_SIGN_IN_SUCCESS,
+  EMAIL_SIGN_IN_FAILURE,
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
 } from './authTypes'
 
@@ -22,17 +23,18 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case RESTORE_TOKEN_START:
     case FACEBOOK_SIGN_IN_START:
     case EMAIL_SIGN_IN_START:
+    case SIGN_UP_START:
     case SIGN_OUT_START:
       return {
         ...state,
         isLoading: true,
         error: null,
       }
-    case RESTORE_TOKEN_SUCCESS:
-    case SIGN_IN_SUCCESS:
+    case FACEBOOK_SIGN_IN_SUCCESS:
+    case EMAIL_SIGN_IN_SUCCESS:
+    case SIGN_UP_SUCCESS:
       return {
         ...state,
         isSignOut: false,
@@ -50,8 +52,8 @@ export default (state = INITIAL_STATE, action) => {
         user: {},
         error: null,
       }
-    case RESTORE_TOKEN_FAILURE:
-    case SIGN_IN_FAILURE:
+    case FACEBOOK_SIGN_IN_FAILURE:
+    case EMAIL_SIGN_IN_FAILURE:
     case SIGN_OUT_FAILURE:
     case SIGN_UP_FAILURE:
       return {

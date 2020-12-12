@@ -4,26 +4,19 @@ Facebook.initializeAsync({
 })
 
 import {
-  RESTORE_TOKEN_START,
-  RESTORE_TOKEN_SUCCESS,
-  RESTORE_TOKEN_FAILURE,
   FACEBOOK_SIGN_IN_START,
+  FACEBOOK_SIGN_IN_SUCCESS,
+  FACEBOOK_SIGN_IN_FAILURE,
   EMAIL_SIGN_IN_START,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
+  EMAIL_SIGN_IN_SUCCESS,
+  EMAIL_SIGN_IN_FAILURE,
   SIGN_OUT_START,
-  SIGN_OUT_FAILURE,
   SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
 } from './authTypes'
-
-export const restoreToken = async (dispatch) => {
-  try {
-    dispatch({ type: RESTORE_TOKEN_START })
-    dispatch({ type: RESTORE_TOKEN_SUCCESS, token: token, user: user })
-  } catch ({ message }) {
-    dispatch({ type: RESTORE_TOKEN_FAILURE, error: message })
-  }
-}
 
 export const facebookSignIn = async (dispatch) => {
   try {
@@ -42,22 +35,30 @@ export const facebookSignIn = async (dispatch) => {
     if (type === 'success') {
       // Get the user's name using Facebook's Graph API
       const response = await fetch(
-        `https://graph.facebook.com/me?fields=id,name,picture.type(large),email&access_token=${token}`
+        `https://graph.facebook.com/me?fields=id,first_name,last_name,picture.type(normal),email&access_token=${token}`
       )
       const info = await response.json()
-      console.log('Logged in!', info)
+      console.log(
+        ' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Logged in!',
+        info
+      )
 
-      const { id, name, email, picture } = info
-      const { data } = picture
-      const user = { id: id, name: name, email: email, picture: data.url }
+      const { id, first_name, last_name, email, picture } = info
+      const user = {
+        id: id,
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        picture: picture.data.url,
+      }
 
-      dispatch({ type: SIGN_IN_SUCCESS, token: token, user: user })
+      dispatch({ type: FACEBOOK_SIGN_IN_SUCCESS, token: token, user: user })
     } else {
       // type === 'cancel'
       console.log('login cancel')
     }
   } catch ({ message }) {
-    dispatch({ type: SIGN_IN_FAILURE, error: message })
+    dispatch({ type: FACEBOOK_SIGN_IN_FAILURE, error: message })
   }
 }
 
@@ -75,24 +76,41 @@ export const signIn = (form) => async (dispatch) => {
     const data = await res.json()
 
     if (data?.token) {
-      const { id, first_name, last_name, role, email } = data.content
-      console.log('====================================')
-      console.log(data.content)
-      console.log('====================================')
-      const user = {
-        id: id,
-        name: first_name + ' ' + last_name,
-        role: role,
-        email: email,
-      }
-
-      dispatch({ type: SIGN_IN_SUCCESS, token: data.token, user: user })
+      dispatch({
+        type: EMAIL_SIGN_IN_SUCCESS,
+        token: data.token,
+        user: data.content,
+      })
       return
     }
 
-    dispatch({ type: SIGN_IN_FAILURE, error: data.message })
+    dispatch({ type: EMAIL_SIGN_IN_FAILURE, error: data.message })
   } catch ({ message }) {
-    dispatch({ type: SIGN_IN_FAILURE, error: message })
+    dispatch({ type: EMAIL_SIGN_IN_FAILURE, error: message })
+  }
+}
+
+export const signUp = (form, fb_id = undefined) => async (dispatch) => {
+  try {
+    dispatch({ type: SIGN_UP_START })
+
+    const res = await fetch(
+      'http://45.55.110.117/mentornow-api/api/public/users/register',
+      {
+        method: 'POST',
+        body: form,
+      }
+    )
+    const data = await res.json()
+
+    if (data?.token) {
+      dispatch({ type: SIGN_UP_SUCCESS, token: data.token, user: user })
+      return
+    }
+
+    dispatch({ type: SIGN_UP_FAILURE, error: data.message })
+  } catch ({ message }) {
+    dispatch({ type: SIGN_UP_FAILURE, error: message })
   }
 }
 
