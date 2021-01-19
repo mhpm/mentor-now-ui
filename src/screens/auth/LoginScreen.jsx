@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components'
-import { Button, Container, Text, Wrapper } from '../../components'
+import { Button, Container, Text, Wrapper, Box } from '../../components'
 import logoImage from '../../../assets/logoW.png'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { facebookSignIn } from '../../redux/auth/authActions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -20,13 +20,20 @@ const Footer = styled(View)`
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch()
+  const { error } = useSelector((state) => state.auth)
+
   const signIn = () => dispatch(facebookSignIn)
-  //AsyncStorage.clear()
+  AsyncStorage.clear()
 
   return (
     <Container p={4}>
       <Wrapper>
         <Logo source={logoImage}></Logo>
+        <Box mb={3}>
+          <Text fontSize="14px" fontFamily="bold" color="error">
+            {error}
+          </Text>
+        </Box>
         <Button fluid variant="blue" onPress={signIn}>
           Iniciar con Facebook
         </Button>

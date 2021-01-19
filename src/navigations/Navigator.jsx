@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useDispatch, useSelector } from 'react-redux'
+import { Keyboard } from 'react-native'
 import theme from '../theme/LightTheme'
 
 // Auth Screens
@@ -37,6 +38,33 @@ function Auth() {
 }
 
 function Main() {
+  const [keyboar, setKeyboar] = useState(false)
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', _keyboardDidShow)
+    Keyboard.addListener('keyboardDidHide', _keyboardDidHide)
+
+    // cleanup function
+    return () => {
+      Keyboard.removeListener('keyboardDidShow', _keyboardDidShow)
+      Keyboard.removeListener('keyboardDidHide', _keyboardDidHide)
+    }
+  }, [])
+
+  const _keyboardDidShow = () => {
+    console.log('====================================')
+    console.log('Keyboard Shown')
+    console.log('====================================')
+    setKeyboar(true)
+  }
+
+  const _keyboardDidHide = () => {
+    console.log('====================================')
+    console.log('Keyboard Hidden')
+    console.log('====================================')
+    setKeyboar(false)
+  }
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -84,7 +112,7 @@ function Main() {
           borderTopWidth: 0,
           left: 5,
           right: 5,
-          bottom: -20,
+          bottom: keyboar ? '-10%' : '-3%',
         },
       }}
     >
