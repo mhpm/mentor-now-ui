@@ -15,12 +15,12 @@ const CatalogScreen = () => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <Container pt="6%" px="10px">
-      <SearchBar mb="-10px" />
+    <Container pt="12%" px="10px">
+      <SearchBar />
       <Wrapper mdCol={8} loading={loading}>
-        <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
+        <Box mb={10} p={10} bg="primary" width="100%" borderRadius={7}>
           <Text mx="auto" fontFamily="black">
-            Top Mas Solicitadas
+            Catálogo
           </Text>
         </Box>
         <FlatList

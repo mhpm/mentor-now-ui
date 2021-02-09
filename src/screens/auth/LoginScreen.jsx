@@ -1,11 +1,11 @@
 import React from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components'
-import { Button, Container, Text, Wrapper, Box } from '../../components'
 import logoImage from '../../../assets/logoW.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { facebookSignIn } from '../../redux/auth/authActions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Button, Container, Text, Wrapper, Box } from '../../components'
 
 const Logo = styled(Image)`
   width: 200px;

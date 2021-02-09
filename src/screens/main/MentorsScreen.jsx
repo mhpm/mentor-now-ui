@@ -14,9 +14,9 @@ const MentorsScreen = () => {
   const { loading, data } = useFetch('https://randomuser.me/api/?results=100')
 
   return (
-    <Container pt="6%" px="10px">
-      <SearchBar mb="-10px" />
-      <Box my={10} p={10} bg="primary" width="100%" borderRadius={7}>
+    <Container pt="12%" px="10px">
+      <SearchBar />
+      <Box mb={10} p={10} bg="primary" width="100%" borderRadius={7}>
         <Text mx="auto" fontFamily="black">
           Mentores Disponibles
         </Text>
