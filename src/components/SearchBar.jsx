@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import Box from './Box'
 import Input from './Input'
+import Button from './Button'
 
 const Icon = styled(FontAwesome5)`
   position: absolute;
@@ -35,7 +36,13 @@ const SearchBar = (props) => {
         placeholder="Buscar..."
         onChangeText={(text) => setText(text)}
         value={text}
+        borderRadius="100px"
       />
+      {text.length > 2 && (
+        <Button fluid variant="primary">
+          BUSCAR
+        </Button>
+      )}
     </Box>
   )
 }

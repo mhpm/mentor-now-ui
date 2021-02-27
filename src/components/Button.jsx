@@ -8,24 +8,23 @@ import { space } from 'styled-system'
 const { colors } = LightTheme
 
 const BaseButton = styled(TouchableHighlight)`
-  height: 60px;
+  height: 50px;
   border-radius: 100px;
-  margin: 5px;
+  margin-bottom: 7px;
   width: ${(props) => (props.fluid ? '100%' : '300px')};
   ${space}
 `
 
 const ButtonStyled = styled(View)`
-  height: 60px;
+  height: 50px;
   border-radius: 100px;
   align-items: center;
-  padding: 15px;
+  padding-top: 14px;
   background-color: ${(props) => (props.variant ? props.variant : colors.dark)};
   width: 100%;
 `
 
-const Button = (props) => {
-  const { children, variant, fluid, ...restProps } = props
+const Button = ({ variant, fluid, children, ...restProps }) => {
   return (
     <BaseButton fluid={fluid} activeOpacity={0.6} {...restProps}>
       <ButtonStyled variant={colors[variant]}>

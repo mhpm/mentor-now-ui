@@ -6,11 +6,6 @@ import Box from './Box'
 import Text from './Text'
 import { space, color, fontSize, fontFamily, border } from 'styled-system'
 
-const validateEmail = (email) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return re.test(email.toLowerCase())
-}
-
 const StyledInput = styled(TextInput)`
   position: relative;
   padding-left: 17px;
@@ -56,13 +51,13 @@ const Input = (props) => {
   const getIcon = () => <Icon name={props.icon} size={24} />
 
   return (
-    <Box width="100%" mb={3}>
+    <Box width="100%" mb={2}>
       <StyledInput
         fontFamily="bold"
         secureTextEntry={props.type === 'password' && toggle}
         placeholderTextColor="#999"
         {...props}
-        borderRadius="15px"
+        borderRadius={props.borderRadius || '15px'}
       />
       {props.type === 'password' && getEyeIcon()}
       {props.type !== 'password' && props.icon && getIcon()}

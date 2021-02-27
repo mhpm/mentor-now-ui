@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Container,
-  SearchBar,
-  TopicCard,
-  Box,
-  Text,
-  Wrapper,
-} from '../../components'
+import { Container, SearchBar, TopicCard, Wrapper } from '../../components'
 import { FlatList } from 'react-native'
 import Topics from '../../mock/Topics'
 
@@ -18,11 +11,6 @@ const CatalogScreen = () => {
     <Container pt="12%" px="10px">
       <SearchBar />
       <Wrapper mdCol={8} loading={loading}>
-        <Box mb={10} p={10} bg="primary" width="100%" borderRadius={7}>
-          <Text mx="auto" fontFamily="black">
-            Catálogo
-          </Text>
-        </Box>
         <FlatList
           style={{ width: 100 + '%' }}
           data={data}
