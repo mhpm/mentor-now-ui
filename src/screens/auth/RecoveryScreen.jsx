@@ -1,25 +1,46 @@
 import React from 'react'
-import { Image, View } from 'react-native'
-import styled from 'styled-components'
-import { Button, Container, Text, Box, Wrapper } from '../../components'
+import * as Yup from 'yup'
+import { useFormik } from 'formik'
+import { useNavigation } from '@react-navigation/native'
+import { Button, Container, Text, Box, Wrapper, Input } from '../../components'
 
-const Footer = styled(View)`
-  position: absolute;
-  bottom: 30px;
-`
+const RecoveryScreen = () => {
+  const navigation = useNavigation()
 
-const RecoveryScreen = ({ navigation }) => {
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Correo invalido').required('Campo requerido'),
+    }),
+    onSubmit: (values) => handleSubmit(values),
+  })
+
+  const handleSubmit = ({ email }) => {
+    const form = new FormData()
+    form.append('email', email.toLowerCase())
+  }
+
   return (
-    <Container p={3}>
+    <Container p={3} icon>
       <Wrapper>
-        <Box p={2} width="100%">
-          <Text mx="auto">Recuperar Contraseña</Text>
-        </Box>
-        <Footer>
-          <Text fontFamily="bold" onPress={() => navigation.goBack()}>
-            Cancelar
-          </Text>
-        </Footer>
+        <Input
+          bg="shade5"
+          label="Emial:"
+          autoCompleteType="off"
+          placeholder="Email"
+          onChangeText={formik.handleChange('email')}
+          value={formik.values.email}
+          textHelper={
+            formik.errors.email && formik.touched.email
+              ? formik.errors.email
+              : null
+          }
+        />
+        <Button mt="3" variant="primary" fluid onPress={formik.handleSubmit}>
+          Recuperar Contraseña
+        </Button>
       </Wrapper>
     </Container>
   )

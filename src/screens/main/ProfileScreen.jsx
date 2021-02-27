@@ -19,7 +19,7 @@ const Footer = styled(View)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 110px;
+  bottom: 30px;
   width: 100%;
 `
 

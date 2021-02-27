@@ -104,7 +104,10 @@ export const signUp = (form, fb_id = undefined) => async (dispatch) => {
     const data = await res.json()
 
     if (data?.token) {
-      dispatch({ type: SIGN_UP_SUCCESS, token: data.token, user: user })
+      console.log('====================================')
+      console.log(data.content)
+      console.log('====================================')
+      dispatch({ type: SIGN_UP_SUCCESS, token: data.token, user: data.content })
       return
     }
 

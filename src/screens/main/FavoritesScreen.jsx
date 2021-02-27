@@ -4,7 +4,7 @@ import { Container, MentorCard, Wrapper, Box, Text } from '../../components'
 import { FlatList } from 'react-native'
 
 const FavoritesScreen = () => {
-  const { loading, data } = useFetch('https://randomuser.me/api/?results=10')
+  const { loading, data } = useFetch('https://randomuser.me/api/?results=5')
   return (
     <Container p="10px">
       <Box mt={40} mb={2} p={10} bg="primary" width="100%" borderRadius={7}>

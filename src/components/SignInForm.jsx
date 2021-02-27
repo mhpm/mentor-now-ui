@@ -36,7 +36,7 @@ const SignInForm = () => {
   }
 
   return (
-    <Wrapper loading={isLoading} mb="100px">
+    <Wrapper loading={isLoading}>
       <Box p={2}>
         <Text fontFamily="black" fontSize="26px" mx="auto" mb={3}>
           Inicio de Sesión
