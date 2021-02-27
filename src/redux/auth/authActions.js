@@ -1,4 +1,5 @@
 import * as Facebook from 'expo-facebook'
+
 Facebook.initializeAsync({
   appId: '1007474016423973',
 })
@@ -16,6 +17,9 @@ import {
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  RESET_PASSWORD_START,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from './authTypes'
 
 export const facebookSignIn = async (dispatch) => {
@@ -126,5 +130,26 @@ export const signOut = async (dispatch) => {
     dispatch({ type: SIGN_OUT_SUCCESS })
   } catch ({ message }) {
     dispatch({ type: SIGN_OUT_FAILURE, error: message })
+  }
+}
+
+export const resetPassword = (form) => async (dispatch) => {
+  console.log('====================================')
+  console.log(dispatch)
+  console.log('====================================')
+  try {
+    dispatch({ type: RESET_PASSWORD_START })
+
+    const res = await fetch(
+      'http://polls.apiblueprint.org/users/password/reset',
+      {
+        method: 'POST',
+        body: form,
+      }
+    )
+
+    dispatch({ type: RESET_PASSWORD_SUCCESS })
+  } catch ({ message }) {
+    dispatch({ type: RESET_PASSWORD_FAILURE, error: message })
   }
 }
