@@ -47,7 +47,7 @@ const LoginScreen = ({ navigation }) => {
           </Text>
         </Text>
         <Footer>
-          <Text fontFamily="bold">MentorNow &reg; 2020</Text>
+          <Text fontFamily="bold">MentorNow &reg; 2021</Text>
         </Footer>
       </Wrapper>
     </Container>

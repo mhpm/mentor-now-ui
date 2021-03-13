@@ -2,13 +2,12 @@
   "expo": {
     "name": "mentor now",
     "slug": "mentor-now",
-    "version": "1.0.0",
+    "version": "1.0.55",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
