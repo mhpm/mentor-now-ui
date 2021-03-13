@@ -31,12 +31,12 @@ const Topics = [
   },
   {
     _id: '6',
-    topic: 'Cafetería',
+    topic: 'negocios',
     mentores: 11,
   },
   {
     _id: '7',
-    topic: 'Algoritmos',
+    topic: 'algoritmos',
     mentores: 15,
   },
 ]

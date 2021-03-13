@@ -1,10 +1,10 @@
 import React from 'react'
-import useFetch from '../../hooks/useFetch'
+import { fetchMentors } from '../../hooks/useMentors'
 import { Container, Wrapper, MentorCard, Box, Text } from '../../components'
 import { FlatList } from 'react-native'
 
 const MentorsScreen = () => {
-  const { loading, data } = useFetch('https://randomuser.me/api/?results=100')
+  const { loading, data } = fetchMentors()
 
   return (
     <Container pt="12%" px="10px">
@@ -16,7 +16,7 @@ const MentorsScreen = () => {
       <Wrapper mdCol={8} loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
-          data={data.results}
+          data={null}
           renderItem={(item) => (
             <MentorCard primary key={item.cell} item={item.item} />
           )}
