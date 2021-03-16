@@ -1,10 +1,11 @@
 import React from 'react'
-import { fetchMentors } from '../../hooks/useMentors'
+import useMentors from '../../hooks/useMentors'
 import { Container, Wrapper, MentorCard, Box, Text } from '../../components'
 import { FlatList } from 'react-native'
 
 const MentorsScreen = () => {
-  const { loading, data } = fetchMentors()
+  const { getMentors } = useMentors()
+  const { loading, data } = getMentors()
 
   return (
     <Container pt="12%" px="10px">
@@ -16,12 +17,12 @@ const MentorsScreen = () => {
       <Wrapper mdCol={8} loading={loading}>
         <FlatList
           style={{ width: 100 + '%' }}
-          data={null}
-          renderItem={(item) => (
-            <MentorCard primary key={item.cell} item={item.item} />
+          data={data}
+          renderItem={({ item }) => (
+            <MentorCard primary key={item.id} mentor={item} />
           )}
           contentContainerStyle={{ paddingBottom: 70 }}
-          keyExtractor={(item) => item.cell}
+          keyExtractor={(item) => String(item.id)}
         />
       </Wrapper>
     </Container>

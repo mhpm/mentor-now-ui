@@ -19,12 +19,12 @@ const LeftColumn = styled(View)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110px;
+  width: 100px;
 `
 
 const Column = styled(View)`
   padding: 10px;
-  width: 55%;
+  width: 60%;
 `
 
 const RightColumn = styled(View)`
@@ -39,10 +39,11 @@ const Avatar = styled(Image)`
   border-radius: 50px;
 `
 
-const MentorCard = ({ item, hearth }) => {
+const MentorCard = ({ mentor }) => {
   const navigation = useNavigation()
   const [rating, setRating] = useState(0)
-  const { name, picture, dob } = item
+  const { first_name, last_name, stars, is_favorite } = mentor
+  const { image, id } = mentor.profile
 
   const getRanting = useCallback(() => {
     let random = Math.random() * 5 + 1
@@ -54,31 +55,33 @@ const MentorCard = ({ item, hearth }) => {
   }, [])
 
   const goProfile = () => {
-    navigation.navigate('MentorProfile', { info: { name, picture, rating } })
+    navigation.navigate('MentorProfile', {
+      info: { ...mentor.profile, first_name, last_name, stars },
+    })
   }
 
   return (
     <Container onPress={goProfile}>
       <LeftColumn>
-        <Avatar source={{ uri: picture.medium }} />
+        <Avatar source={{ uri: image }} />
       </LeftColumn>
       <Column>
-        <Text fontFamily="bold">{name.first + ' ' + name.last}</Text>
+        <Text fontFamily="bold">{first_name + ' ' + last_name}</Text>
         <Text fontFamily="light" fontSize="14px">
           Software Engineere
         </Text>
-        <Text fontFamily="light" fontSize="14px">
-          Mentorias impartidas: {dob.age}
-        </Text>
-        <Rating primary value={rating} />
+        {/* <Text fontFamily="light" fontSize="14px">
+          Mentorias impartidas: {id}
+        </Text> */}
+        <Rating primary value={stars} />
       </Column>
       <RightColumn>
-        {hearth && (
+        {is_favorite && (
           <AntDesign
             name="heart"
-            size={28}
+            size={22}
             color="white"
-            style={{ paddingRight: 20 }}
+            style={{ paddingRight: 10 }}
           />
         )}
       </RightColumn>
