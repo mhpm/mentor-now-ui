@@ -1,32 +1,25 @@
 import React from 'react'
-import useMentors from '../../hooks/useMentors'
-import { Container, Wrapper, MentorCard, Box, Text } from '../../components'
+import useFetch from '../../hooks/useFetch'
+import { Container, MentorCard, Wrapper } from '../../components'
 import { FlatList } from 'react-native'
 
-const MentorsScreen = () => {
-  const { getFavoritesMentors } = useMentors()
-  const { loading, data } = getFavoritesMentors()
-
+const FavoritesScreen = () => {
+  const { loading, data } = useFetch('https://randomuser.me/api/?results=5')
   return (
-    <Container pt="12%" px="10px">
-      <Box mb={10} p={10} bg="primary" width="100%" borderRadius={7}>
-        <Text mx="auto" fontFamily="black">
-          Mentores Favoritos
-        </Text>
-      </Box>
-      <Wrapper mdCol={8} loading={loading}>
+    <Container p="10px">
+      <Wrapper loading={loading} mt="10%">
         <FlatList
           style={{ width: 100 + '%' }}
-          data={data}
-          renderItem={({ item }) => (
-            <MentorCard primary key={item.id} mentor={item} />
+          data={data.results}
+          renderItem={(item) => (
+            <MentorCard key={item.cell} item={item.item} hearth />
           )}
           contentContainerStyle={{ paddingBottom: 70 }}
-          keyExtractor={(item) => String(item.id)}
+          keyExtractor={(item) => item.cell}
         />
       </Wrapper>
     </Container>
   )
 }
 
-export default MentorsScreen
+export default FavoritesScreen
